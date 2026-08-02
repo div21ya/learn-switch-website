@@ -1,0 +1,695 @@
+/* ================================================================
+   CODE WITH US — Rebuilt IDE CSS
+   Matches LearnSwitch theme (contact_style.css vars)
+================================================================ */
+
+/* ── Zone wrapper ── */
+.code-lab-wrap {
+  padding: 70px 6%;
+  position: relative;
+}
+
+/* ── Top bar ── */
+.lab-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.lab-title h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  margin-top: 6px;
+}
+
+.lab-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Language pill */
+.lab-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.lab-select i {
+  color: var(--royal-violet);
+}
+
+#lang-select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+/* Action buttons */
+.btn-run,
+.btn-clear,
+.btn-download {
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+
+.btn-run {
+  background: linear-gradient(135deg, #10b981, #4ade80);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.28);
+}
+
+.btn-run:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(16, 185, 129, 0.38);
+}
+
+.btn-clear {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  color: var(--text-main);
+}
+
+.btn-clear:hover {
+  transform: translateY(-2px);
+  border-color: rgba(86, 207, 225, 0.5);
+  box-shadow: 0 8px 24px rgba(116, 0, 184, 0.1);
+}
+
+.btn-download {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(116, 0, 184, 0.2);
+  color: var(--royal-violet, #7400b8);
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  background: rgba(116, 0, 184, 0.08);
+  box-shadow: 0 8px 24px rgba(116, 0, 184, 0.15);
+}
+
+/* ── IDE Shell ── */
+.lab-panel {
+  display: flex;
+  width: 100%;
+  height: 78vh;
+  min-height: 620px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.1);
+}
+
+/* ── Left pane (editor side) ── */
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── File tab bar ── */
+.tab-bar {
+  display: flex;
+  align-items: stretch;
+  background: #0d1424;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  overflow-x: auto;
+  min-height: 42px;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+.tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 16px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(148, 163, 184, 0.7);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: "Fira Code", monospace;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  position: relative;
+  min-height: 42px;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+}
+
+.tab-btn.active {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-bottom: 2px solid var(--royal-violet, #7400b8);
+}
+
+.tab-btn .tab-icon {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.tab-close {
+  margin-left: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  font-size: 10px;
+  background: transparent;
+  transition: 0.15s;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tab-btn:hover .tab-close {
+  opacity: 1;
+}
+
+.tab-close:hover {
+  background: rgba(220, 38, 38, 0.25);
+  color: #fca5a5;
+}
+
+.tab-add {
+  padding: 0 14px;
+  background: transparent;
+  border: none;
+  color: rgba(148, 163, 184, 0.5);
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.18s;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.tab-add:hover {
+  color: var(--strong-cyan, #56cfe1);
+  transform: scale(1.15);
+}
+
+/* ── Editor body ── */
+.panel-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* VS Code editor area */
+.editor-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.line-nums {
+  width: 50px;
+  background: #0b1226;
+  color: rgba(148, 163, 184, 0.55);
+  font-family: "Fira Code", monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: 16px 8px;
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: pre;
+  flex-shrink: 0;
+}
+
+.fake-editor {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 16px 18px;
+  font-family: "Fira Code", monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #e2e8f0;
+  background: #0f172a;
+  overflow: auto;
+  tab-size: 2;
+  caret-color: var(--strong-cyan, #56cfe1);
+}
+
+/* status bar */
+.editor-statusbar {
+  height: 24px;
+  background: #0b1226;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.status-item {
+  font-family: "Fira Code", monospace;
+  font-size: 10.5px;
+  color: rgba(148, 163, 184, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-item.ok {
+  color: #4ade80;
+}
+
+.status-item.err {
+  color: #f87171;
+}
+
+/* ── Resizer ── */
+.resizer {
+  width: 5px;
+  cursor: col-resize;
+  background: rgba(15, 23, 42, 0.07);
+  transition: background 0.2s;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.resizer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  width: 3px;
+  border-radius: 2px;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.resizer:hover,
+.resizer.dragging {
+  background: rgba(116, 0, 184, 0.4);
+}
+
+.resizer:hover::after,
+.resizer.dragging::after {
+  background: var(--royal-violet, #7400b8);
+}
+
+/* ── Output pane ── */
+.output-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  background: #070a13;
+}
+
+.panel-head {
+  padding: 0 16px;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(148, 163, 184, 0.6);
+  background: #0d1424;
+  flex-shrink: 0;
+}
+
+.panel-head span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+}
+
+/* Output body flex container */
+.output-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 10px;
+  gap: 10px;
+  background: #070a13;
+}
+
+/* Preview iframe */
+.preview-frame {
+  width: 100%;
+  flex: 1;
+  border: none;
+  border-radius: 14px;
+  background: white;
+}
+
+/* Console */
+.console-box {
+  flex: 0 0 190px;
+  border-radius: 14px;
+  background: #050810;
+  border: 1px solid rgba(86, 207, 225, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.console-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+  color: rgba(226, 232, 240, 0.6);
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(86, 207, 225, 0.1);
+}
+
+.console-clear {
+  border: none;
+  background: transparent;
+  color: rgba(128, 255, 219, 0.8);
+  font-weight: 800;
+  font-size: 11px;
+  cursor: pointer;
+  transition: 0.18s;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.console-clear:hover {
+  background: rgba(86, 207, 225, 0.12);
+  color: #56cfe1;
+}
+
+#consoleLog {
+  flex: 1;
+  padding: 12px 14px;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #4ade80;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  word-break: break-all;
+}
+
+/* Console log colors */
+#consoleLog .log-err {
+  color: #f87171;
+}
+
+#consoleLog .log-warn {
+  color: #fbbf24;
+}
+
+#consoleLog .log-info {
+  color: #60a5fa;
+}
+
+#consoleLog .log-ok {
+  color: #4ade80;
+}
+
+/* ── Mode-based show/hide ── */
+.output-body.html-mode .console-box {
+  flex: 0 0 130px;
+}
+
+.output-body.js-mode .preview-frame {
+  display: none;
+}
+
+.output-body.js-mode .console-box {
+  flex: 1;
+  border-radius: 14px;
+}
+
+.output-body.c-mode .preview-frame {
+  display: none;
+}
+
+.output-body.c-mode .console-box {
+  flex: 1;
+  border-radius: 14px;
+}
+
+/* C compile status badge */
+.compile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: "Fira Code", monospace;
+}
+
+.compile-badge.running {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.compile-badge.ok {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.compile-badge.fail {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+/* ── File rename input (inline) ── */
+.tab-rename-input {
+  background: #1e293b;
+  border: 1px solid var(--royal-violet, #7400b8);
+  color: #f1f5f9;
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 2px 6px;
+  outline: none;
+  width: 100px;
+}
+
+/* ── C stdin input area ── */
+.stdin-area {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stdin-area.visible {
+  display: flex;
+}
+
+.stdin-area label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(148, 163, 184, 0.6);
+  font-weight: 700;
+}
+
+.stdin-area textarea {
+  background: #050810;
+  border: 1px solid rgba(86, 207, 225, 0.18);
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-family: "Fira Code", monospace;
+  font-size: 12.5px;
+  padding: 8px 12px;
+  resize: none;
+  height: 60px;
+  outline: none;
+}
+
+.stdin-area textarea:focus {
+  border-color: rgba(86, 207, 225, 0.45);
+}
+
+/* ── Dark mode adjustments ── */
+body.dark-mode .lab-panel {
+  background: rgba(7, 10, 19, 0.85);
+  border-color: rgba(148, 163, 184, 0.1);
+}
+
+body.dark-mode .lab-select,
+body.dark-mode .btn-clear,
+body.dark-mode .btn-download {
+  background: rgba(7, 10, 19, 0.6);
+  border-color: rgba(148, 163, 184, 0.14);
+  color: #e2e8f0;
+}
+
+body.dark-mode #lang-select {
+  color: #e2e8f0;
+}
+
+body.dark-mode .resizer {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .lab-panel {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+  }
+
+  .editor-pane {
+    min-height: 55vh;
+  }
+
+  .output-pane {
+    min-height: 45vh;
+  }
+
+  .resizer {
+    width: 100%;
+    height: 6px;
+    cursor: row-resize;
+  }
+
+  .resizer::after {
+    width: 40px;
+    height: 3px;
+  }
+}
+
+/* ── Footer (carried over) ── */
+.footbar {
+  background: #0f172a;
+  color: var(--white);
+  padding: 80px 10% 40px;
+}
+
+.footer-sections-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-section h2 {
+  color: var(--pearl-aqua);
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  height: 40px;
+  width: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--white);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--royal-violet);
+  transform: translateY(-3px);
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--strong-cyan);
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+body.dark-mode .footbar {
+  background: #05070e;
+}
+
+@media (max-width: 768px) {
+  .footer-sections-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

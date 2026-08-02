@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | LearnSwitch</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style1.css" />
+  <link rel="stylesheet" href="dark_mode.css">
+  <link rel="stylesheet" href="project.css">
+  <script src="auth-guard.js"></script>
+   
+</head>
+
+<body>
+
+  <!-- Scroll bar -->
+  <div class="scroll-container">
+    <div class="scroll-bar" id="myBar"></div>
+  </div>
+
+  <!-- Particles -->
+  <div class="night-particles" id="nightParticles"></div>
+
+  <!-- Navbar -->
+  <header class="header-box">
+    <nav class="navbar">
+        <a href="home.html" class="logo">Learn<span>Switch</span></a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li>
+                <a href="home.html#about">About</a>
+            </li>
+            <li class="dropdown">
+                <a href="preference.html">Resources <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="preference.html">Roadmaps</a></li>
+                    <!-- <li><a href="#">Concise Concepts</a></li> -->
+                    <!-- <li><a href="#">Cheat Sheets</a></li> -->
+                    <!-- <li><a href="#">My Notes</a></li> -->
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="codewithus.html">TechSec <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="codewithus.html">Code With Us</a></li>
+                    <!-- <li><a href="#">Debug Guide</a></li> -->
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="project.html">Projects <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="project.html#webdev">Web Dev Projects</a></li>
+                    <li><a href="project.html#dsa">DSA Challenges</a></li>
+                    <li><a href="project.html#python">Python Scripts</a></li>
+                </ul>
+            </li>
+
+            <li><a href="contact.html">Contact</a>
+
+        </ul>
+        <div class="nav-right">
+            <button id="theme-switch" class="theme-bubble-nav">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <!-- Smart nav icon: logged-in → dropdown, else → login page -->
+            <div id="navUserArea" style="position:relative">
+              <!-- Guest state (default shown, hidden if logged in) -->
+              <a href="login.html" class="login-icon" id="navGuestBtn">
+                <i class="fa-regular fa-circle-user"></i>
+              </a>
+              <!-- Logged-in state (hidden by default) -->
+              <div id="navLoggedIn" style="display:none">
+                <div id="navAvatarBtn" style="cursor:pointer;width:36px;height:36px;border-radius:50%;border:2px solid rgba(116,0,184,0.4);background:rgba(116,0,184,0.08);display:flex;align-items:center;justify-content:center;color:var(--royal-violet,#7400b8);font-size:18px;overflow:hidden;">
+                  <i class="fa-regular fa-circle-user" id="navAvatarIcon"></i>
+                  <img id="navAvatarImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;border-radius:50%;">
+                </div>
+                <div id="navDropdown" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:14px;padding:8px;min-width:180px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:2000;">
+                  <div id="navDropUser" style="padding:10px 12px 8px;font-size:13px;font-weight:700;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:6px;color:#1e1e2f;"></div>
+                  <a href="dashboard.html" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#1e1e2f;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(116,0,184,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-gauge" style="color:#7400b8;width:16px;"></i> Dashboard</a>
+                  <div id="navLogoutBtn" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#dc2626;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(220,38,38,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-right-from-bracket" style="width:16px;"></i> Log Out</div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </nav>
+</header>
+
+  <main>
+    <div class="projects-page">
+
+      <!-- Hero -->
+      <div class="projects-hero">
+        <div class="projects-hero-inner">
+          <p class="slogan">Build Real Things</p>
+          <h1 class="head">Explore <span class="gradient-text">Projects</span></h1>
+          <p class="description">
+            Hands-on projects across Web Development, Data Structures & Algorithms,
+            and Python. Pick your level, build something real, and grow fast.
+          </p>
+
+          <!-- Category Tabs -->
+          <div class="category-tabs">
+            <a href="#webdev" class="cat-tab" id="tab-webdev">
+              <i class="fa-solid fa-code"></i> Web Dev
+            </a>
+            <a href="#dsa" class="cat-tab" id="tab-dsa">
+              <i class="fa-solid fa-diagram-project"></i> DSA Challenges
+            </a>
+            <a href="#python" class="cat-tab" id="tab-python">
+              <i class="fa-brands fa-python"></i> Python Scripts
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================
+           SECTION 1 — WEB DEV PROJECTS
+      ================================================ -->
+      <section id="webdev" class="proj-section">
+        <div class="proj-section-head">
+          <div class="proj-section-icon web">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div>
+            <h2>Web Dev Projects</h2>
+            <p>Frontend + Backend challenges to build your portfolio</p>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="proj-grid">
+
+          <!-- Project 1 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon web"><i class="fa-solid fa-palette"></i></div>
+              <span class="diff-badge diff-easy">Easy</span>
+            </div>
+            <h3 class="card-title">Personal Portfolio Website</h3>
+            <p class="card-desc">
+              Build a clean, responsive portfolio using HTML & CSS. Include a hero section,
+              skills grid, project showcase, and a contact form. Practice flexbox, grid, and
+              CSS animations.
+            </p>
+            <div class="card-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Flexbox</span>
+              <span class="tag">Responsive</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~3 hrs</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon web"><i class="fa-solid fa-cloud-sun"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Weather Dashboard App</h3>
+            <p class="card-desc">
+              Fetch live weather data using the OpenWeatherMap API. Display temperature,
+              humidity, wind speed, and a 5-day forecast. Practice async/await, fetch API,
+              and dynamic DOM manipulation.
+            </p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">REST API</span>
+              <span class="tag">Async/Await</span>
+              <span class="tag">DOM</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~5 hrs</span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon web"><i class="fa-solid fa-list-check"></i></div>
+              <span class="diff-badge diff-easy">Easy</span>
+            </div>
+            <h3 class="card-title">Task Manager with Local Storage</h3>
+            <p class="card-desc">
+              Build a fully functional To-Do app with add, delete, and complete features.
+              Persist data using localStorage so tasks survive page refresh. Great for
+              understanding state management basics.
+            </p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">localStorage</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~2 hrs</span>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon web"><i class="fa-solid fa-cart-shopping"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">E-Commerce Product Page</h3>
+            <p class="card-desc">
+              Build a product listing page with cart functionality. Add/remove items,
+              calculate totals, and handle quantity updates. Covers component thinking and
+              event delegation patterns.
+            </p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS Grid</span>
+              <span class="tag">Events</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~6 hrs</span>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon web"><i class="fa-solid fa-blog"></i></div>
+              <span class="diff-badge diff-hard">Hard</span>
+            </div>
+            <h3 class="card-title">Full-Stack Blog Platform</h3>
+            <p class="card-desc">
+              Build a blog with user authentication, CRUD for posts, and a rich text editor.
+              Backend with Node.js + Express, database with MongoDB. Deploy to a live URL.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Auth</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~15 hrs</span>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon web"><i class="fa-solid fa-gamepad"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Snake Game in JavaScript</h3>
+            <p class="card-desc">
+              Recreate the classic Snake game using the HTML5 Canvas API. Handle keyboard
+              events, collision detection, score tracking, and increasing speed. Pure JS — no
+              libraries.
+            </p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Canvas API</span>
+              <span class="tag">Game Logic</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~4 hrs</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================
+           SECTION 2 — DSA CHALLENGES
+      ================================================ -->
+      <section id="dsa" class="proj-section">
+        <div class="proj-section-head">
+          <div class="proj-section-icon dsa">
+            <i class="fa-solid fa-diagram-project"></i>
+          </div>
+          <div>
+            <h2>DSA Challenges</h2>
+            <p>Algorithm problems to sharpen your problem-solving for interviews</p>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="proj-grid">
+
+          <!-- DSA 1 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon dsa"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+              <span class="diff-badge diff-easy">Easy</span>
+            </div>
+            <h3 class="card-title">Two Sum — Hash Map Approach</h3>
+            <p class="card-desc">
+              Given an array of integers, return indices of two numbers that add up to a
+              target. Solve it in O(n) time using a hash map. Classic interview starter that
+              teaches the complement trick.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Arrays</span>
+              <span class="tag">Hash Map</span>
+              <span class="tag">O(n)</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Try It
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~30 min</span>
+            </div>
+          </div>
+
+          <!-- DSA 2 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon dsa"><i class="fa-solid fa-sitemap"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Binary Tree Level Order Traversal</h3>
+            <p class="card-desc">
+              Implement BFS on a binary tree to print nodes level by level. Use a queue data
+              structure. Understand tree traversal patterns essential for coding interviews
+              at top companies.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Trees</span>
+              <span class="tag">BFS</span>
+              <span class="tag">Queue</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Try It
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~45 min</span>
+            </div>
+          </div>
+
+          <!-- DSA 3 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon dsa"><i class="fa-solid fa-layer-group"></i></div>
+              <span class="diff-badge diff-easy">Easy</span>
+            </div>
+            <h3 class="card-title">Valid Parentheses — Stack</h3>
+            <p class="card-desc">
+              Given a string of brackets, check if they are valid and balanced. Use a stack
+              to match opening and closing brackets. Core problem for understanding stack
+              data structure in practice.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Stack</span>
+              <span class="tag">String</span>
+              <span class="tag">O(n)</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Try It
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~20 min</span>
+            </div>
+          </div>
+
+          <!-- DSA 4 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon dsa"><i class="fa-solid fa-link"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Detect Cycle in Linked List</h3>
+            <p class="card-desc">
+              Use Floyd's Tortoise and Hare algorithm to detect if a linked list has a cycle.
+              Solve in O(1) space without using extra memory. A must-know pointer technique
+              for interviews.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Linked List</span>
+              <span class="tag">Two Pointers</span>
+              <span class="tag">Floyd's</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Try It
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~40 min</span>
+            </div>
+          </div>
+
+          <!-- DSA 5 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon dsa"><i class="fa-solid fa-table-cells"></i></div>
+              <span class="diff-badge diff-hard">Hard</span>
+            </div>
+            <h3 class="card-title">Longest Common Subsequence — DP</h3>
+            <p class="card-desc">
+              Find the longest subsequence present in both strings using dynamic programming.
+              Build a 2D DP table and understand the recurrence relation. Foundational DP
+              problem for competitive programming.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Dynamic Programming</span>
+              <span class="tag">2D DP</span>
+              <span class="tag">Strings</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Try It
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~1.5 hrs</span>
+            </div>
+          </div>
+
+          <!-- DSA 6 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon dsa"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Binary Search on Rotated Array</h3>
+            <p class="card-desc">
+              Search for a target in a sorted array that has been rotated at an unknown pivot.
+              Modify classic binary search to handle rotation. O(log n) solution — common in
+              FAANG interviews.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Binary Search</span>
+              <span class="tag">Arrays</span>
+              <span class="tag">O(log n)</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Try It
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~50 min</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================
+           SECTION 3 — PYTHON SCRIPTS
+      ================================================ -->
+      <section id="python" class="proj-section">
+        <div class="proj-section-head">
+          <div class="proj-section-icon py">
+            <i class="fa-brands fa-python"></i>
+          </div>
+          <div>
+            <h2>Python Scripts</h2>
+            <p>Real-world automation, data, and scripting challenges</p>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="proj-grid">
+
+          <!-- Python 1 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon py"><i class="fa-solid fa-spider"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Web Scraper with BeautifulSoup</h3>
+            <p class="card-desc">
+              Scrape product names, prices, and ratings from a public e-commerce site.
+              Parse HTML using BeautifulSoup, store results in a CSV. Learn request handling,
+              HTML parsing, and data export.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">BeautifulSoup</span>
+              <span class="tag">requests</span>
+              <span class="tag">CSV</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~3 hrs</span>
+            </div>
+          </div>
+
+          <!-- Python 2 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon py"><i class="fa-solid fa-folder-open"></i></div>
+              <span class="diff-badge diff-easy">Easy</span>
+            </div>
+            <h3 class="card-title">File Organizer Script</h3>
+            <p class="card-desc">
+              Write a Python script that scans a folder and automatically sorts files into
+              subfolders by extension (.jpg, .pdf, .mp3, etc). Use the os and shutil modules.
+              Great for learning file system automation.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">os</span>
+              <span class="tag">shutil</span>
+              <span class="tag">Automation</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~1.5 hrs</span>
+            </div>
+          </div>
+
+          <!-- Python 3 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon py"><i class="fa-solid fa-chart-bar"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Data Analysis with Pandas</h3>
+            <p class="card-desc">
+              Load a real dataset (e.g. Titanic CSV), clean missing values, filter rows, group
+              by columns, and visualize results with matplotlib. Covers the full data science
+              mini-pipeline from raw to insight.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">CSV</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~4 hrs</span>
+            </div>
+          </div>
+
+          <!-- Python 4 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon py"><i class="fa-solid fa-envelope"></i></div>
+              <span class="diff-badge diff-easy">Easy</span>
+            </div>
+            <h3 class="card-title">Automated Email Sender</h3>
+            <p class="card-desc">
+              Send personalized emails in bulk using Python's smtplib and a CSV of recipients.
+              Learn SMTP, MIMEText, and how to loop through data to customize each message.
+              Real-world automation you'll use in professional projects.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">smtplib</span>
+              <span class="tag">MIME</span>
+              <span class="tag">Automation</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~2 hrs</span>
+            </div>
+          </div>
+
+          <!-- Python 5 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon py"><i class="fa-solid fa-robot"></i></div>
+              <span class="diff-badge diff-hard">Hard</span>
+            </div>
+            <h3 class="card-title">CLI Chatbot with OpenAI API</h3>
+            <p class="card-desc">
+              Build a terminal chatbot that talks to the OpenAI GPT API. Maintain conversation
+              history, handle API errors gracefully, and add a typing effect for responses.
+              Introduction to LLM integration and API authentication.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenAI API</span>
+              <span class="tag">CLI</span>
+              <span class="tag">JSON</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~5 hrs</span>
+            </div>
+          </div>
+
+          <!-- Python 6 -->
+          <div class="proj-card">
+            <div class="card-top">
+              <div class="card-icon py"><i class="fa-solid fa-lock"></i></div>
+              <span class="diff-badge diff-medium">Medium</span>
+            </div>
+            <h3 class="card-title">Password Manager CLI App</h3>
+            <p class="card-desc">
+              Build a command-line password manager that encrypts and stores credentials
+              using the cryptography library. Add master password login, search, and clipboard
+              copy features. Covers encryption basics and secure storage.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">cryptography</span>
+              <span class="tag">pyperclip</span>
+              <span class="tag">JSON</span>
+            </div>
+            <div class="card-footer">
+              <a href="codewithus.html" class="btn-start">
+                <i class="fa-solid fa-play"></i> Start Project
+              </a>
+              <span class="card-time"><i class="fa-regular fa-clock"></i> ~4 hrs</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- end .projects-page -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="footbar">
+    <div class="footer-sections-wrapper">
+      <section class="footer-section">
+        <h2>Stay Connected</h2>
+        <p>Follow me on social media for the latest updates and tech inspiration!</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </section>
+      <section class="footer-section">
+        <h2>Contact Me</h2>
+        <p>If you have any questions or just want to say hi, feel free to reach out!</p>
+        <p>Email: <a href="mailto:LearnSwitch@example.com">LearnSwitch@example.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+        <p>Address: 123 Coding Lane, Tech City, TC 12345</p>
+      </section>
+      <section class="footer-section">
+        <h2>Quick Links</h2>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a><br />
+          <a href="#">Terms of Service</a><br />
+          <a href="#">FAQ</a><br />
+          <a href="#">Help and Support</a>
+        </div>
+      </section>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LS - LearnSwitch. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+
+  <script src="project.js"></script>
+  
+
+</body>
+</html>

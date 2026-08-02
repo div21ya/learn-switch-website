@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code With Us | LearnSwitch</title>
+  <script src="auth-guard.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- JSZip for download as ZIP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- Common Theme -->
+  <link rel="stylesheet" href="contact_style.css">
+
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="codewithus.css">
+  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="dark_mode.css">
+</head>
+
+<body>
+
+  <div id="nightParticles" class="night-particles"></div>
+
+  <div class="scroll-container">
+    <div class="scroll-bar" id="myBar"></div>
+  </div>
+
+  <header class="header-box">
+    <nav class="navbar">
+      <a href="home.html" class="logo">Learn<span>Switch</span></a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="home.html#about">About</a></li>
+        <li class="dropdown">
+          <a href="preference.html">Resources <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="preference.html">Roadmaps</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="codewithus.html">TechSec <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="codewithus.html">Code With Us</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="project.html">Projects <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="project.html#webdev">Web Dev Projects</a></li>
+            <li><a href="project.html#dsa">DSA Challenges</a></li>
+            <li><a href="project.html#python">Python Scripts</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button id="theme-switch" class="theme-bubble-nav">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div id="navUserArea" style="position:relative">
+          <a href="login.html" class="login-icon" id="navGuestBtn">
+            <i class="fa-regular fa-circle-user"></i>
+          </a>
+          <div id="navLoggedIn" style="display:none">
+            <div id="navAvatarBtn" style="cursor:pointer;width:36px;height:36px;border-radius:50%;border:2px solid rgba(116,0,184,0.4);background:rgba(116,0,184,0.08);display:flex;align-items:center;justify-content:center;color:var(--royal-violet,#7400b8);font-size:18px;overflow:hidden;">
+              <i class="fa-regular fa-circle-user" id="navAvatarIcon"></i>
+              <img id="navAvatarImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;border-radius:50%;">
+            </div>
+            <div id="navDropdown" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:14px;padding:8px;min-width:180px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:2000;">
+              <div id="navDropUser" style="padding:10px 12px 8px;font-size:13px;font-weight:700;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:6px;color:#1e1e2f;"></div>
+              <a href="dashboard.html" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#1e1e2f;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(116,0,184,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-gauge" style="color:#7400b8;width:16px;"></i> Dashboard</a>
+              <div id="navLogoutBtn" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#dc2626;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(220,38,38,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-right-from-bracket" style="width:16px;"></i> Log Out</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero content-margin">
+      <div class="hero-content">
+        <div class="greeting-area">
+          <h2>Code With Us <span class="wave">⚡</span></h2>
+          <p class="slogan">Practice Zone</p>
+        </div>
+        <h1 class="head">
+          Write, Run, and <br />
+          <span class="gradient-text">Learn Faster</span>
+        </h1>
+        <p class="description">
+          Full IDE in your browser. Multi-file HTML/CSS/JS projects,
+          JavaScript sandbox, and C compiler — all with live output.
+        </p>
+        <div class="hero-btns">
+          <a href="#editorZone" class="btn-primary">
+            <i class="fa-solid fa-play"></i> Start Coding
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITOR ZONE -->
+    <section id="editorZone" class="content-margin tint-violet code-lab-wrap">
+
+      <!-- Top bar -->
+      <div class="lab-top">
+        <div class="lab-title">
+          <p class="slogan">Workspace</p>
+          <h2>Live <span class="gradient-text">Editor</span></h2>
+        </div>
+
+        <div class="lab-actions">
+
+          <!-- Language selector -->
+          <div class="lab-select">
+            <i class="fa-solid fa-code"></i>
+            <select id="lang-select">
+              <option value="web">HTML / CSS / JS</option>
+              <option value="js">JavaScript</option>
+              <option value="c">C</option>
+            </select>
+          </div>
+
+          <!-- Run -->
+          <button id="runBtn" class="btn-run">
+            <i class="fa-solid fa-bolt"></i> Run
+          </button>
+
+          <!-- Download ZIP (web mode only) -->
+          <button id="downloadBtn" class="btn-download" title="Download all files as ZIP">
+            <i class="fa-solid fa-file-zipper"></i> ZIP
+          </button>
+
+          <!-- Clear -->
+          <button id="clearBtn" class="btn-clear">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+          </button>
+
+        </div>
+      </div>
+
+      <!-- IDE Panel -->
+      <div class="lab-panel" id="labPanel">
+
+        <!-- LEFT: Editor side -->
+        <div class="editor-pane" id="editorPane">
+
+          <!-- File tab bar (web mode) -->
+          <div class="tab-bar" id="tabBar">
+            <!-- tabs injected by JS -->
+            <button class="tab-add" id="addTabBtn" title="New file">＋</button>
+          </div>
+
+          <!-- Editor body -->
+          <div class="panel-body">
+            <div class="editor-wrap">
+              <div id="lineNums" class="line-nums"></div>
+              <textarea id="codeEditor" class="fake-editor" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+            </div>
+          </div>
+
+          <!-- Status bar -->
+          <div class="editor-statusbar">
+            <span class="status-item" id="statusLang"><i class="fa-solid fa-circle" style="font-size:7px"></i> <span id="statusLangTxt">HTML</span></span>
+            <span class="status-item" id="statusLines">0 lines</span>
+            <span class="status-item" id="statusCursor">Ln 1, Col 1</span>
+            <span class="status-item" id="statusMsg"></span>
+          </div>
+
+          <!-- Stdin (C mode only) -->
+          <div class="stdin-area" id="stdinArea">
+            <label><i class="fa-solid fa-keyboard"></i> &nbsp;stdin (program input)</label>
+            <textarea id="stdinInput" placeholder="Enter input your program will read (stdin)..."></textarea>
+          </div>
+
+        </div>
+
+        <!-- Resizer -->
+        <div id="dragBar" class="resizer"></div>
+
+        <!-- RIGHT: Output side -->
+        <div class="output-pane" id="outputPane">
+
+          <div class="panel-head">
+            <span><i class="fa-solid fa-display"></i> output</span>
+            <span id="compileBadge"></span>
+          </div>
+
+          <div class="panel-body output-body html-mode" id="outputBody">
+
+            <!-- Web preview -->
+            <iframe id="previewFrame" class="preview-frame"></iframe>
+
+            <!-- Console -->
+            <div class="console-box">
+              <div class="console-head">
+                <span><i class="fa-solid fa-terminal" style="font-size:10px;margin-right:4px"></i> console</span>
+                <button id="consoleClear" class="console-clear">clear</button>
+              </div>
+              <pre id="consoleLog"></pre>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /lab-panel -->
+    </section>
+
+  </main>
+
+  <footer class="footbar">
+    <div class="footer-sections-wrapper">
+      <section class="footer-section">
+        <h2>Stay Connected</h2>
+        <p>Follow me on social media for the latest updates and tech inspiration!</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </section>
+      <section class="footer-section">
+        <h2>Contact Me</h2>
+        <p>If you have any questions or just want to say hi, feel free to reach out!</p>
+        <p>Email: <a href="mailto:LearnSwitch@example.com">LearnSwitch@example.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+        <p>Address: 123 Coding Lane, Tech City, TC 12345</p>
+      </section>
+      <section class="footer-section">
+        <h2>Quick Links</h2>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a><br>
+          <a href="#">Terms of Service</a><br>
+          <a href="#">FAQ</a><br>
+          <a href="#">Help and Support</a>
+        </div>
+      </section>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LS - LearnSwitch. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="contact.js"></script>
+  <script src="codewithus.js"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>

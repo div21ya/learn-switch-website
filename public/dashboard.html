@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | LearnSwitch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="dark_mode.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="auth-guard.js"></script>
+</head>
+<body>
+
+<!-- Particles -->
+<div id="nightParticles" class="night-particles"></div>
+
+<!-- Heat Tooltip -->
+<div id="heatTooltip"></div>
+
+<!-- ========================
+     NAVBAR
+======================== -->
+<header class="header-box">
+  <nav class="navbar">
+      <a href="home.html" class="logo">Learn<span>Switch</span></a>
+      <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li>
+              <a href="home.html#about">About</a>
+          </li>
+          <li class="dropdown">
+              <a href="preference.html">Resources <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                  <li><a href="preference.html">Roadmaps</a></li>
+                  <!-- <li><a href="#">Concise Concepts</a></li> -->
+                  <!-- <li><a href="#">Cheat Sheets</a></li> -->
+                  <!-- <li><a href="#">My Notes</a></li> -->
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a href="codewithus.html">TechSec <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                  <li><a href="codewithus.html">Code With Us</a></li>
+                  <!-- <li><a href="#">Debug Guide</a></li> -->
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a href="project.html">Projects <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                  <li><a href="project.html#webdev">Web Dev Projects</a></li>
+                  <li><a href="project.html#dsa">DSA Challenges</a></li>
+                  <li><a href="project.html#python">Python Scripts</a></li>
+              </ul>
+          </li>
+
+          <li><a href="contact.html">Contact</a>
+
+      </ul>
+      <div class="nav-right">
+          <button id="theme-switch" class="theme-bubble-nav">
+              <i class="fa-solid fa-moon"></i>
+          </button>
+          <!-- Smart nav icon: logged-in → dropdown, else → login page -->
+          <div id="navUserArea" style="position:relative">
+            <!-- Guest state (default shown, hidden if logged in) -->
+            <a href="login.html" class="login-icon" id="navGuestBtn">
+              <i class="fa-regular fa-circle-user"></i>
+            </a>
+            <!-- Logged-in state (hidden by default) -->
+            <div id="navLoggedIn" style="display:none">
+              <div id="navAvatarBtn" style="cursor:pointer;width:36px;height:36px;border-radius:50%;border:2px solid rgba(116,0,184,0.4);background:rgba(116,0,184,0.08);display:flex;align-items:center;justify-content:center;color:var(--royal-violet,#7400b8);font-size:18px;overflow:hidden;">
+                <i class="fa-regular fa-circle-user" id="navAvatarIcon"></i>
+                <img id="navAvatarImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;border-radius:50%;">
+              </div>
+              <div id="navDropdown" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:14px;padding:8px;min-width:180px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:2000;">
+                <div id="navDropUser" style="padding:10px 12px 8px;font-size:13px;font-weight:700;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:6px;color:#1e1e2f;"></div>
+                <a href="dashboard.html" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#1e1e2f;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(116,0,184,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-gauge" style="color:#7400b8;width:16px;"></i> Dashboard</a>
+                <div id="navLogoutBtn" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#dc2626;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(220,38,38,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-right-from-bracket" style="width:16px;"></i> Log Out</div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+  </nav>
+</header>
+
+<!-- ========================
+     SIDEBAR — with anchor nav links
+======================== -->
+<div class="sidebar" id="sidebar">
+  <div class="sb-profile">
+    <div class="sb-avatar" id="sbAvatar">
+      <i class="fa-solid fa-user" id="sbAvatarIcon"></i>
+      <img id="sbAvatarImg" src="" alt="">
+    </div>
+    <div class="sb-info">
+      <div class="sb-name" id="sbName">Loading…</div>
+      <div class="sb-role">Pro Learner</div>
+    </div>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-section-label">Core</div>
+    <div class="sb-item active" data-section="section-overview">
+      <i class="fa-solid fa-gauge"></i>
+      <span class="sb-label">Dashboard</span>
+    </div>
+    <div class="sb-item" data-section="section-roadmap">
+      <i class="fa-solid fa-map"></i>
+      <span class="sb-label">Roadmap</span>
+    </div>
+    <div class="sb-item" data-section="section-heatmap">
+      <i class="fa-solid fa-fire"></i>
+      <span class="sb-label">Heatmap</span>
+    </div>
+    <div class="sb-item" data-section="section-analytics">
+      <i class="fa-solid fa-chart-line"></i>
+      <span class="sb-label">Analytics</span>
+    </div>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-section-label">Learn</div>
+    <div class="sb-item" data-section="section-skills">
+      <i class="fa-solid fa-code"></i>
+      <span class="sb-label">DSA</span>
+    </div>
+    <div class="sb-item" data-section="section-skills">
+      <i class="fa-brands fa-html5"></i>
+      <span class="sb-label">Web Dev</span>
+    </div>
+    <div class="sb-item" data-section="section-skills">
+      <i class="fa-brands fa-python"></i>
+      <span class="sb-label">Python</span>
+    </div>
+  </div>
+
+  <div class="sb-section" style="margin-top:auto">
+    <div class="sb-item" id="sbLogout" style="color:rgba(255,120,120,0.9)">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span class="sb-label">Logout</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========================
+     MAIN
+======================== -->
+<div class="main" id="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar" id="section-overview">
+    <div class="topbar-left">
+      <h1 id="dashGreeting">Welcome back 👋</h1>
+      <p id="dashDate"></p>
+    </div>
+    <div class="topbar-right">
+      <input class="topbar-search" placeholder="🔍  Search anything…" />
+      <button class="edit-profile-btn" id="openEditProfile">
+        <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+      </button>
+    </div>
+  </div>
+
+  <!-- PROFILE CARD (outside grid, full-width row) -->
+  <div class="card profile-card" id="section-profile">
+    <div class="card-title">My Profile</div>
+    <div class="profile-display">
+      <div class="profile-avatar-big" id="profileAvatarBig">
+        <i class="fa-solid fa-user" id="profileAvatarIcon"></i>
+        <img id="profileAvatarImg" src="" alt="">
+      </div>
+      <h3 class="profile-name" id="profileName">—</h3>
+      <p class="profile-email" id="profileEmail">—</p>
+      <p class="profile-bio" id="profileBio"></p>
+      <p class="profile-joined" id="profileJoined"></p>
+      <div class="profile-badges">
+        <span class="badge violet">Pro Learner</span>
+        <span class="badge cyan" id="profileLocationBadge" style="display:none"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT CARDS -->
+  <div class="grid" id="section-stats">
+    <div class="card stat-card">
+      <div class="stat-icon violet"><i class="fa-solid fa-fire"></i></div>
+      <div class="stat-val" id="statStreak">0</div>
+      <div class="stat-label">Day Streak 🔥</div>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon cyan"><i class="fa-solid fa-check-circle"></i></div>
+      <div class="stat-val" id="statSteps">0/5</div>
+      <div class="stat-label">Steps Done</div>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon green"><i class="fa-solid fa-clock"></i></div>
+      <div class="stat-val" id="statHours">0</div>
+      <div class="stat-label">Total Hours</div>
+    </div>
+  </div>
+
+  <!-- ANALYTICS: CHART + CALENDAR -->
+  <div class="grid" id="section-analytics">
+    <div class="card chart-card">
+      <div class="card-title">Weekly Study Hours</div>
+      <canvas id="progressChart" height="90"></canvas>
+    </div>
+    <div class="card calendar-card">
+      <div class="cal-nav">
+        <button id="calPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <span class="cal-month" id="calMonthLabel"></span>
+        <button id="calNext"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div class="cal-weekdays">
+        <span>Su</span><span>Mo</span><span>Tu</span>
+        <span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <!-- HEATMAP -->
+  <div class="grid" id="section-heatmap">
+    <div class="card heatmap-card">
+      <div class="heat-meta">
+        <div>
+          <div class="card-title" style="margin-bottom:4px">Study Heatmap</div>
+          <div class="heat-streak">Longest streak: <span id="heatLongest">0</span> days &nbsp;|&nbsp; This year: <span id="heatTotal">0</span> sessions</div>
+        </div>
+        <div class="heat-legend">
+          <span>Less</span>
+          <div class="legend-cell" style="background:rgba(86,207,225,0.2)"></div>
+          <div class="legend-cell" style="background:rgba(86,207,225,0.45)"></div>
+          <div class="legend-cell" style="background:rgba(86,207,225,0.72)"></div>
+          <div class="legend-cell" style="background:#56cfe1"></div>
+          <span>More</span>
+        </div>
+      </div>
+      <div class="heat-months" id="heatMonths"></div>
+      <div class="heat-wrap">
+        <div class="heat-day-labels">
+          <div class="heat-day-label" style="margin-top:14px"></div>
+          <div class="heat-day-label">Mon</div>
+          <div class="heat-day-label"></div>
+          <div class="heat-day-label">Wed</div>
+          <div class="heat-day-label"></div>
+          <div class="heat-day-label">Fri</div>
+          <div class="heat-day-label"></div>
+        </div>
+        <div class="heat-cols" id="heatCols"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP + SKILLS -->
+  <div class="grid" id="section-roadmap">
+    <!-- ROADMAP ACCORDION CARD -->
+    <div class="card roadmap-card">
+      <div class="card-title">Roadmap Progress</div>
+      <div id="roadmapAccordion"></div>
+      <a href="preference.html" class="roadmap-new-btn">
+        <i class="fa-solid fa-plus"></i> New Roadmap
+      </a>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="card skills-card" id="section-skills">
+      <div class="card-title">Skill Progress</div>
+      <div class="skill-row">
+        <div class="skill-top"><span>Data Structures & Algorithms</span><span id="dsaSkill">0%</span></div>
+        <div class="skill-bar"><div class="skill-fill fill-violet" id="dsaBar" style="width:0%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span>Web Development</span><span id="webSkill">0%</span></div>
+        <div class="skill-bar"><div class="skill-fill fill-cyan" id="webBar" style="width:0%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span>Python</span><span id="pySkill">0%</span></div>
+        <div class="skill-bar"><div class="skill-fill fill-green" id="pyBar" style="width:0%"></div></div>
+      </div>
+      <div class="card-title" style="margin-top:18px">Topics Covered</div>
+      <div class="tags" id="topicTags"></div>
+    </div>
+  </div>
+
+</div><!-- /.main -->
+
+<!-- ========================
+     EDIT PROFILE MODAL
+======================== -->
+<div class="modal-overlay" id="editProfileModal">
+  <div class="modal-box">
+    <button class="modal-close-btn" id="closeEditProfile"><i class="fa-solid fa-xmark"></i></button>
+    <h2 class="modal-title">Edit Profile</h2>
+    <p class="modal-sub">Update your info, bio, and profile picture.</p>
+
+    <div class="avatar-upload-area">
+      <div class="avatar-preview" id="modalAvatarPreview">
+        <i class="fa-solid fa-user" id="modalAvatarIcon"></i>
+        <img id="modalAvatarImg" src="" alt="">
+      </div>
+      <div>
+        <button class="avatar-upload-btn" id="avatarUploadBtn">
+          <i class="fa-solid fa-camera"></i> Change Photo
+        </button>
+        <p style="font-size:11px;color:var(--muted);margin:6px 0 0">JPG, PNG · Max 2MB</p>
+      </div>
+      <input type="file" id="avatarFileInput" accept="image/*">
+    </div>
+
+    <div class="two-col-form">
+      <div class="form-group">
+        <label class="form-label">First Name</label>
+        <input class="form-input" id="editFirstName" placeholder="First name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last Name</label>
+        <input class="form-input" id="editLastName" placeholder="Last name" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <input class="form-input" id="editUsername" placeholder="@username" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input class="form-input" id="editEmail" placeholder="you@example.com" type="email" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Location</label>
+      <input class="form-input" id="editLocation" placeholder="City, Country" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Bio</label>
+      <textarea class="form-textarea" id="editBio" placeholder="Tell everyone a bit about yourself…"></textarea>
+    </div>
+
+    <button class="save-btn" id="saveProfileBtn">
+      <i class="fa-solid fa-floppy-disk"></i> Save Changes
+    </button>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

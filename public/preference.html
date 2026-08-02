@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Preferences | LearnSwitch</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style1.css" />
+
+    <link rel="stylesheet" href="preference.css" />
+    <link rel="stylesheet" href="dark_mode.css">
+    <script src="auth-guard.js"></script>
+  </head>
+
+  <body>
+    <div class="scroll-container">
+      <div class="scroll-bar" id="myBar"></div>
+    </div>
+
+    <div class="night-particles" id="nightParticles"></div>
+
+    <header class="header-box">
+      <nav class="navbar">
+          <a href="home.html" class="logo">Learn<span>Switch</span></a>
+          <ul class="nav-links">
+              <li><a href="home.html">Home</a></li>
+              <li>
+                  <a href="home.html#about">About</a>
+              </li>
+              <li class="dropdown">
+                  <a href="preference.html">Resources <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="preference.html">Roadmaps</a></li>
+                      <!-- <li><a href="#">Concise Concepts</a></li> -->
+                      <!-- <li><a href="#">Cheat Sheets</a></li> -->
+                      <!-- <li><a href="#">My Notes</a></li> -->
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="codewithus.html">TechSec <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="codewithus.html">Code With Us</a></li>
+                      <!-- <li><a href="#">Debug Guide</a></li> -->
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="project.html">Projects <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="project.html#webdev">Web Dev Projects</a></li>
+                      <li><a href="project.html#dsa">DSA Challenges</a></li>
+                      <li><a href="project.html#python">Python Scripts</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="contact.html">Contact</a>
+
+          </ul>
+          <div class="nav-right">
+              <button id="theme-switch" class="theme-bubble-nav">
+                  <i class="fa-solid fa-moon"></i>
+              </button>
+              <!-- Smart nav icon: logged-in → dropdown, else → login page -->
+              <div id="navUserArea" style="position:relative">
+                <!-- Guest state (default shown, hidden if logged in) -->
+                <a href="login.html" class="login-icon" id="navGuestBtn">
+                  <i class="fa-regular fa-circle-user"></i>
+                </a>
+                <!-- Logged-in state (hidden by default) -->
+                <div id="navLoggedIn" style="display:none">
+                  <div id="navAvatarBtn" style="cursor:pointer;width:36px;height:36px;border-radius:50%;border:2px solid rgba(116,0,184,0.4);background:rgba(116,0,184,0.08);display:flex;align-items:center;justify-content:center;color:var(--royal-violet,#7400b8);font-size:18px;overflow:hidden;">
+                    <i class="fa-regular fa-circle-user" id="navAvatarIcon"></i>
+                    <img id="navAvatarImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;border-radius:50%;">
+                  </div>
+                  <div id="navDropdown" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:14px;padding:8px;min-width:180px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:2000;">
+                    <div id="navDropUser" style="padding:10px 12px 8px;font-size:13px;font-weight:700;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:6px;color:#1e1e2f;"></div>
+                    <a href="dashboard.html" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#1e1e2f;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(116,0,184,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-gauge" style="color:#7400b8;width:16px;"></i> Dashboard</a>
+                    <div id="navLogoutBtn" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#dc2626;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(220,38,38,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-right-from-bracket" style="width:16px;"></i> Log Out</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+      </nav>
+  </header>
+
+    <main class="pref-page">
+      <div class="pref-container">
+        <div class="pref-inner">
+          <div class="pref-header">
+            <p class="slogan">Step 01 • Preferences</p>
+            <h1 class="head">Customize Your <span class="gradient-text">Roadmap</span></h1>
+            <p>
+              Tell us how you learn best and we’ll switch up the content for
+              you. Clean, fast, and tailored.-
+            </p>
+          </div>
+          <form>
+            <!-- SUBJECT -->
+            <div class="pref-section">
+              <h3><span class="step-pill">1</span> Choose Subject</h3>
+              <div class="options-grid">
+                <div class="option-card" data-group="subject" data-value="web">
+                  <div class="opt-ic"><i class="fa-solid fa-code"></i></div>
+                  <div class="opt-txt">
+                    <strong>Web Development</strong>
+                    <small>Frontend + Backend + Projects</small>
+                  </div>
+                </div>
+
+                <div class="option-card" data-group="subject" data-value="dsa">
+                  <div class="opt-ic">
+                    <i class="fa-solid fa-diagram-project"></i>
+                  </div>
+                  <div class="opt-txt">
+                    <strong>DSA</strong>
+                    <small>Logic building + Placements</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LEVEL -->
+            <div class="pref-section">
+              <h3>
+                <span class="step-pill">2</span> What is your current level?
+              </h3>
+              <div class="options-grid">
+                <div
+                  class="option-card"
+                  data-group="level"
+                  data-value="beginner"
+                >
+                  <div class="opt-ic"><i class="fa-solid fa-seedling"></i></div>
+                  <div class="opt-txt">
+                    <strong>Beginner</strong>
+                    <small>Start from scratch</small>
+                  </div>
+                </div>
+
+                <div
+                  class="option-card"
+                  data-group="level"
+                  data-value="intermediate"
+                >
+                  <div class="opt-ic"><i class="fa-solid fa-rocket"></i></div>
+                  <div class="opt-txt">
+                    <strong>Intermediate</strong>
+                    <small>Build stronger depth</small>
+                  </div>
+                </div>
+
+                <div
+                  class="option-card"
+                  data-group="level"
+                  data-value="advanced"
+                >
+                  <div class="opt-ic"><i class="fa-solid fa-crown"></i></div>
+                  <div class="opt-txt">
+                    <strong>Advanced</strong>
+                    <small>Master & optimize</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LEARNING STYLE -->
+            <div class="pref-section">
+              <h3><span class="step-pill">3</span> Preferred learning style</h3>
+              <div class="options-grid">
+                <div class="option-card" data-group="style" data-value="video">
+                  <div class="opt-ic"><i class="fa-solid fa-play"></i></div>
+                  <div class="opt-txt">
+                    <strong>Video Tutorials</strong>
+                    <small>Watch + learn fast</small>
+                  </div>
+                </div>
+
+                <div class="option-card" data-group="style" data-value="docs">
+                  <div class="opt-ic">
+                    <i class="fa-solid fa-file-lines"></i>
+                  </div>
+                  <div class="opt-txt">
+                    <strong>Documentation</strong>
+                    <small>Read + understand deeply</small>
+                  </div>
+                </div>
+
+                <div class="option-card" data-group="style" data-value="ai">
+                  <div class="opt-ic"><i class="fa-solid fa-robot"></i></div>
+                  <div class="opt-txt">
+                    <strong>AI Assisted Learning</strong>
+                    <small>Learn interactively with AI</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pref-actions">
+              <!-- <a href="roadmap.html" class="btn-generate"> -->
+              <button type="button" id="generateRoadmap" class="btn-generate">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <p>Step 02 • Generate Roadmap</p>
+              </button>
+            </div>
+          </form>
+
+          <!-- <form>
+
+          <div class="pref-section">
+            <h3><span class="step-pill">1</span> What is your current level?</h3>
+            <div class="options-grid">
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-seedling"></i></div>
+                <div class="opt-txt">
+                  <strong>Beginner</strong>
+                  <small>Start from scratch</small>
+                </div>
+              </div>
+
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-rocket"></i></div>
+                <div class="opt-txt">
+                  <strong>Intermediate</strong>
+                  <small>Build stronger depth</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pref-section">
+            <h3><span class="step-pill">2</span> Preferred learning style</h3>
+            <div class="options-grid">
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-play"></i></div>
+                <div class="opt-txt">
+                  <strong>Video Tutorials</strong>
+                  <small>Watch + learn fast</small>
+                </div>
+              </div>
+
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-file-lines"></i></div>
+                <div class="opt-txt">
+                  <strong>Documentation</strong>
+                  <small>Read + understand</small>
+                </div>
+              </div>
+
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-keyboard"></i></div>
+                <div class="opt-txt">
+                  <strong>Interactive Practice</strong>
+                  <small>Hands-on coding</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pref-section">
+            <h3><span class="step-pill">3</span> Daily time commitment</h3>
+            <div class="options-grid">
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-clock"></i></div>
+                <div class="opt-txt">
+                  <strong>1–2 Hours</strong>
+                  <small>Easy daily pace</small>
+                </div>
+              </div>
+
+              <div class="option-card">
+                <div class="opt-ic"><i class="fa-solid fa-bolt"></i></div>
+                <div class="opt-txt">
+                  <strong>3–5 Hours</strong>
+                  <small>Serious grind mode</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pref-actions">
+            <span class="mini-hint">✨ Tip: Select one in each section, then generate.</span>
+
+            <a href="roadmap.html" class="btn-generate">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              Generate My Roadmap
+            </a>
+          </div>
+        </form> -->
+        </div>
+      </div>
+    </main>
+    <footer class="footbar">
+      <div class="footer-sections-wrapper">
+        <section class="footer-section">
+          <h2>Stay Connected</h2>
+          <p>
+            Follow me on social media for the latest updates and tech
+            inspiration!
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </section>
+        <section class="footer-section">
+          <h2>Contact Me</h2>
+          <p>
+            If you have any questions or just want to say hi, feel free to reach
+            out!
+          </p>
+          <p>
+            Email:
+            <a href="mailto:LearnSwitch@example.com">LearnSwitch@example.com</a>
+          </p>
+          <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+          <p>Address: 123 Coding Lane, Tech City, TC 12345</p>
+        </section>
+        <section class="footer-section">
+          <h2>Quick Links</h2>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a><br />
+            <a href="#">Terms of Service</a><br />
+            <a href="#">FAQ</a><br />
+            <a href="#">Help and Support</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LS - LearnSwitch. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="preference.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
+

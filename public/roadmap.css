@@ -1,0 +1,440 @@
+
+/* =============================================
+     PREFERENCE DISPLAY BANNER
+  ============================================= */
+#prefDisplay {
+    display: inline-flex;
+    gap: 14px;
+    padding: 12px 22px;
+    border-radius: 50px;
+    background: linear-gradient(135deg,
+            rgba(124, 58, 237, 0.15),
+            rgba(6, 182, 212, 0.15));
+    backdrop-filter: blur(6px);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--royal-violet);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 15px;
+    animation: fadeSlide 0.6s ease;
+}
+
+.pref-tag {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+    animation: tagGlow 3s infinite alternate;
+}
+
+.pref-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.pref-subject {
+    color: #2563eb;
+}
+
+.pref-level {
+    color: #7c3aed;
+}
+
+.pref-style {
+    color: #06b6d4;
+}
+
+/* =============================================
+     ROADMAP SECTION
+  ============================================= */
+.roadmap-section {
+    padding: 90px 10%;
+}
+
+.roadmap-container {
+    position: relative;
+    padding: 80px 0;
+    overflow-x: auto;
+}
+
+.roadmap-line-gradient {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg,
+            var(--royal-violet),
+            var(--strong-cyan),
+            var(--aquamarine));
+    opacity: 0.6;
+    border-radius: 10px;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+    min-width: 200px;
+}
+
+/* ---- Roadmap Items ---- */
+.roadmap-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.roadmap-item.top {
+    transform: translateY(-40px);
+}
+
+.roadmap-item.bottom {
+    transform: translateY(40px);
+}
+
+/* Locked item — not clickable, greyed out */
+.roadmap-item.locked {
+    opacity: 0.35;
+    pointer-events: none;
+    filter: grayscale(0.6);
+}
+
+/* ---- Roadmap Cards ---- */
+.roadmap-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: 0.4s;
+    opacity: 0.8;
+    transform: scale(0.9);
+}
+
+/* Hover (only unlocked items) */
+.roadmap-item:not(.locked):hover .roadmap-card {
+    opacity: 1;
+    transform: scale(1.1);
+    background: var(--white);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Currently selected / highlighted step */
+.roadmap-item.selected .roadmap-card {
+    opacity: 1;
+    transform: scale(1.08);
+    background: var(--white);
+    box-shadow: 0 20px 50px rgba(116, 0, 184, 0.18);
+    border-color: rgba(86, 207, 225, 0.5);
+}
+
+/* Completed — slightly faded, still interactive */
+.roadmap-item.done .roadmap-card {
+    opacity: 0.55;
+    transform: scale(0.92);
+}
+
+/* If completed AND selected — bring back to full visibility */
+.roadmap-item.done.selected .roadmap-card {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+/* ---- Roadmap Dots ---- */
+.roadmap-dot {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    border: 5px solid var(--white);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
+}
+
+.roadmap-item:not(.locked):hover .roadmap-dot {
+    transform: scale(1.3);
+}
+
+/* Selected dot — glows */
+.roadmap-item.selected .roadmap-dot {
+    transform: scale(1.25);
+    box-shadow: 0 0 28px rgba(86, 207, 225, 0.55), 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Done dot — dimmed */
+.roadmap-item.done .roadmap-dot {
+    opacity: 0.55;
+    transform: scale(1.0);
+    box-shadow: 0 0 14px rgba(86, 207, 225, 0.3);
+}
+
+/* Done AND selected dot — visible again */
+.roadmap-item.done.selected .roadmap-dot {
+    opacity: 1;
+    transform: scale(1.25);
+    box-shadow: 0 0 28px rgba(86, 207, 225, 0.55);
+}
+
+/* Dot colours */
+.blue {
+    background: var(--blue-energy);
+}
+
+.orange {
+    background: #f6993f;
+}
+
+.green {
+    background: #38c172;
+}
+
+.yellow {
+    background: #ffed4a;
+    color: #857b26;
+}
+
+.teal {
+    background: var(--strong-cyan);
+}
+
+/* =============================================
+     EXPANDABLE CONTENT PANEL
+  ============================================= */
+.step-content-wrapper {
+    margin-top: 60px;
+    display: none;
+    animation: fadeUp 0.4s ease;
+}
+
+.step-content-wrapper.active {
+    display: block;
+}
+
+.step-content {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.step-content h3 {
+    margin-bottom: 20px;
+    color: var(--royal-violet);
+}
+
+.step-content a {
+    display: block;
+    margin: 10px 0;
+    font-weight: 600;
+    color: var(--strong-cyan);
+    text-decoration: none;
+}
+
+.step-content a:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+     PROGRESS BAR
+  ============================================= */
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--royal-violet), var(--strong-cyan));
+    transition: width 0.6s ease;
+    border-radius: 20px;
+}
+
+.progress-text {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: var(--text-muted);
+}
+
+/* =============================================
+     PROGRESS TRACKER DOTS
+  ============================================= */
+.progress-tracker {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 60px 0;
+}
+
+.progress-step {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    background: #e2e8f0;
+    color: #64748b;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+}
+
+/* Currently highlighted step */
+.progress-step.active {
+    background: linear-gradient(135deg, var(--royal-violet), var(--strong-cyan));
+    color: white;
+    box-shadow: 0 0 20px rgba(86, 207, 225, 0.4);
+}
+
+/* Completed step */
+.progress-step.completed {
+    background: var(--strong-cyan);
+    color: white;
+    box-shadow: 0 0 15px var(--strong-cyan);
+    opacity: 0.7;
+}
+
+/* Completed AND currently selected */
+.progress-step.completed.active {
+    opacity: 1;
+    box-shadow: 0 0 22px var(--strong-cyan);
+}
+
+.progress-step.completed::after {
+    content: "✓";
+    margin-left: 3px;
+    font-size: 12px;
+}
+
+/* Locked step */
+.progress-step.locked {
+    opacity: 0.35;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* =============================================
+     BUTTONS
+  ============================================= */
+.complete-step-btn,
+.step-btn {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--royal-violet), var(--strong-cyan));
+    color: white;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.complete-step-btn:hover,
+.step-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Already completed state on button */
+.complete-step-btn.done-btn {
+    background: #e2e8f0;
+    color: #64748b;
+    cursor: default;
+}
+
+.complete-step-btn.done-btn:hover {
+    transform: none;
+}
+
+/* =============================================
+     KEYFRAMES
+  ============================================= */
+@keyframes fadeIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tagGlow {
+    from {
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    to {
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.25);
+    }
+}
+
+/* =============================================
+     CONFETTI PIECE
+  ============================================= */
+.confetti-piece {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 9999;
+    top: -10px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    } }

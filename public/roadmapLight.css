@@ -1,0 +1,156 @@
+/* =============================================
+   LIGHT THEME OVERRIDES
+============================================= */
+.rm-desc {
+    color: var(--text-muted);
+}
+
+.sc-header {
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.sc-accent-blue {
+    background: linear-gradient(135deg, rgba(83, 144, 217, 0.08), rgba(86, 207, 225, 0.06));
+    border-color: rgba(83, 144, 217, 0.18);
+}
+
+.sc-accent-orange {
+    background: linear-gradient(135deg, rgba(246, 153, 63, 0.08), rgba(255, 237, 74, 0.06));
+    border-color: rgba(246, 153, 63, 0.18);
+}
+
+.sc-accent-green {
+    background: linear-gradient(135deg, rgba(56, 193, 114, 0.08), rgba(86, 207, 225, 0.06));
+    border-color: rgba(56, 193, 114, 0.18);
+}
+
+.sc-accent-yellow {
+    background: linear-gradient(135deg, rgba(246, 153, 63, 0.08), rgba(255, 237, 74, 0.06));
+    border-color: rgba(246, 153, 63, 0.18);
+}
+
+.sc-accent-teal {
+    background: linear-gradient(135deg, rgba(86, 207, 225, 0.08), rgba(128, 255, 219, 0.06));
+    border-color: rgba(86, 207, 225, 0.18);
+}
+
+.sc-header h3 {
+    color: var(--text-main);
+}
+
+.rm-section h4 {
+    color: var(--text-main);
+    border-bottom-color: rgba(15, 23, 42, 0.06);
+}
+
+.rm-section h4 i {
+    color: var(--royal-violet);
+}
+
+.rm-topics li {
+    color: green;
+    background: rgba(86, 207, 225, 0.06);
+    border-color: 
+    
+    rgba(86, 207, 225, 0.12);
+}
+
+.rm-topics li:hover {
+    background: rgba(86, 207, 225, 0.13);
+    border-color: rgba(86, 207, 225, 0.3);
+}
+
+.res-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 23, 42, 0.07);
+}
+
+/* =============================================
+   LIGHT THEME OVERRIDES — UPDATED
+============================================= */
+
+/* AI Tool Card — new color (purple gradient) */
+.ai-tool-card {
+    color: #7400b8;
+    background: linear-gradient(135deg, rgba(116, 0, 184, 0.1), rgba(186, 104, 200, 0.08));
+    border: 1px solid rgba(116, 0, 184, 0.18);
+}
+
+.res-txt strong,
+.ai-tool-txt strong {
+    color: #7400b8;
+}
+
+.res-txt small,
+.ai-tool-txt small {
+    color: #0f172a;
+}
+
+.prompt-box {
+    background: rgba(15, 23, 42, 0.03);
+    border: 1px solid rgba(15, 23, 42, 0.07);
+    border-left: 3px solid var(--royal-violet);
+    color: var(--text-main);
+}
+
+.qbh-text h3 {
+    color: var(--text-main);
+}
+
+.qar-bg {
+    stroke: rgba(15, 23, 42, 0.07);
+}
+
+.qob-labels {
+    color: var(--text-muted);
+}
+
+.qob-pct {
+    color: var(--royal-violet);
+}
+
+.qtc {
+align-items: center;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 1.5px solid rgba(15, 23, 42, 0.07);
+}
+
+.qtc-info{
+    display: flex;
+    gap: 80px;
+    justify-content: space-between;
+}
+.qtc-name {
+    color: purple;
+}
+
+.qtc-cta {
+    color: var(--royal-violet);
+    background: rgba(116, 0, 184, 0.08);
+    border: 1px solid rgba(116, 0, 184, 0.15);
+}
+
+.qtc-status{
+    color: #6930c3;
+}
+
+.qtc-cta {
+    border-radius: 14px;
+    align-items: center;
+    padding: 3px;
+    text-align: center;
+}
+
+.quiz-topics-grid {
+    border-radius: 4px;
+}
+
+.qtc-new {
+    padding: 9px;
+    border-radius: 14px;
+}
+
+.section-header h1 {
+    color:rgb(9, 9, 48);
+}

@@ -1,0 +1,702 @@
+/* =============================================
+   DARK MODE OVERRIDES
+   Import AFTER style1.css:
+   <link rel="stylesheet" href="dark-mode.css">
+============================================= */
+
+/* =============================================
+   BASE — body + global
+============================================= */
+body.dark-mode {
+    background: #070a13;
+    color: #e2e8f0;
+    transition: background-color 1.2s ease, color 1.2s ease;
+}
+
+/* =============================================
+     NAVBAR
+  ============================================= */
+body.dark-mode .header-box {
+    background: rgba(10, 15, 30, 0.92);
+    border-bottom: 1px solid rgba(86, 207, 225, 0.15);
+}
+
+body.dark-mode .logo {
+    color: #c77dff;
+}
+
+body.dark-mode .logo span {
+    color: var(--strong-cyan);
+}
+
+body.dark-mode .nav-links a {
+    color: #e2e8f0;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--strong-cyan);
+}
+
+/* Active link glow */
+body.dark-mode .nav-links a.active-link {
+    color: white;
+    background: rgba(86, 207, 225, 0.15);
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+/* Dropdown */
+body.dark-mode .dropdown-menu {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+body.dark-mode .dropdown-menu li a {
+    color: #e2e8f0;
+}
+
+body.dark-mode .dropdown-menu li a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--strong-cyan);
+}
+
+/* =============================================
+     HERO
+  ============================================= */
+body.dark-mode .hero {
+    background: transparent !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Aurora fog layer */
+body.dark-mode .hero::before {
+    content: "";
+    position: absolute;
+    inset: -250px;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(181, 23, 255, 0.35), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(86, 207, 225, 0.28), transparent 60%),
+        radial-gradient(circle at 50% 90%, rgba(128, 255, 219, 0.14), transparent 55%);
+    filter: blur(60px);
+    opacity: 0.9;
+    z-index: 0;
+    transform: translateZ(0);
+}
+
+/* Subtle page-blend fade */
+body.dark-mode .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(7, 10, 19, 0.30), rgba(7, 10, 19, 0.70));
+    z-index: 0;
+}
+
+body.dark-mode .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-mode .hero.content-margin {
+    border-radius: 0;
+}
+
+/* =============================================
+     TYPOGRAPHY — CLEAR + READABLE
+  ============================================= */
+/* ================= BASE HERO ================= */
+.hero {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -200px;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(116, 0, 184, 0.18), transparent 55%),
+        radial-gradient(circle at 75% 35%, rgba(86, 207, 225, 0.20), transparent 60%);
+    filter: blur(55px);
+    opacity: 0.9;
+    z-index: 0;
+    pointer-events: none;
+    /* ✅ prevents unnecessary interaction cost */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= TEXT ================= */
+.slogan {
+    font-weight: 700;
+    color: var(--blue-energy);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--royal-violet), var(--blue-energy));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    filter: drop-shadow(0 10px 20px rgba(116, 0, 184, 0.10));
+}
+
+body.dark-mode .head {
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.description {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin-bottom: 30px;
+}
+
+.description.small {
+    font-size: 15px;
+    margin: 12px 0 0;
+}
+
+/* ================= SECTION ================= */
+.tint-violet {
+    background-color: rgba(116, 0, 184, 0.03);
+    border-radius: 40px;
+}
+
+.contact-section {
+    position: relative;
+}
+
+/* ================= GRID ================= */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 50px;
+    align-items: start;
+}
+
+/* ================= INFO CARDS ================= */
+.info-item-list {
+    margin-top: 30px;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    /* ✅ optimized */
+    margin-bottom: 18px;
+
+    will-change: transform;
+    /* ✅ smoother hover */
+}
+
+.info-card:hover {
+    transform: translateX(10px);
+    box-shadow:
+        0 25px 55px rgba(116, 0, 184, 0.10),
+        0 18px 40px rgba(15, 23, 42, 0.08);
+    border-color: rgba(100, 223, 223, 0.65);
+}
+
+.info-ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(116, 0, 184, 0.08);
+    color: var(--royal-violet);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.info-txt h4 {
+    color: var(--text-main);
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.info-txt p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* ================= SOCIAL ================= */
+.social-contact {
+    margin-top: 30px;
+}
+
+.social-contact h4 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.social-icons-contact {
+    display: flex;
+    gap: 18px;
+}
+
+.social-icons-contact a {
+    color: var(--royal-violet);
+    font-size: 22px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons-contact a:hover {
+    transform: translateY(-4px);
+    color: var(--strong-cyan);
+}
+
+/* ================= FORM CARD ================= */
+.contact-form-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 26px;
+    padding: 38px;
+
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+    will-change: transform;
+}
+
+.contact-form-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(86, 207, 225, 0.45);
+    box-shadow: 0 25px 70px rgba(116, 0, 184, 0.10);
+}
+
+/* ================= FORM ================= */
+.form-head h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.form-head p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--indigo-bloom);
+    margin: 0 0 8px 4px;
+}
+
+/* unified input styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+
+    border: 2px solid rgba(241, 245, 249, 1);
+    border-radius: 14px;
+
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    color: var(--text-main);
+
+    background: rgba(248, 250, 252, 0.8);
+    outline: none;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    /* ✅ better UX */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--strong-cyan);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(86, 207, 225, 0.12);
+}
+
+/* ================= BUTTON ================= */
+.btn-primary {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+
+    background: linear-gradient(135deg, var(--royal-violet), var(--indigo-bloom));
+    cursor: pointer;
+
+    box-shadow: 0 12px 30px rgba(116, 0, 184, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    will-change: transform;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 45px rgba(116, 0, 184, 0.32);
+}
+
+
+/* =============================================
+     SECTION BACKGROUNDS
+  ============================================= */
+body.dark-mode .tint-violet {
+    background: rgba(116, 0, 184, 0.08);
+}
+
+body.dark-mode .tint-aqua {
+    background: rgba(86, 207, 225, 0.06);
+}
+
+/* =============================================
+     CARDS — COURSE / NOISE / ROADMAP
+  ============================================= */
+body.dark-mode .course-card,
+body.dark-mode .roadmap-card,
+body.dark-mode .noise-container {
+    background: rgba(15, 23, 42, 0.82) !important;
+    border: 1px solid rgba(86, 207, 225, 0.18) !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(116, 0, 184, 0.10) !important;
+}
+
+body.dark-mode .course-card:hover {
+    border-color: rgba(86, 207, 225, 0.38) !important;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.50),
+        0 0 35px rgba(86, 207, 225, 0.15) !important;
+}
+
+body.dark-mode .course-card h3 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .course-card p {
+    color: rgba(203, 213, 225, 0.80);
+}
+
+body.dark-mode .mini-list li {
+    color: rgba(203, 213, 225, 0.75);
+}
+
+body.dark-mode .link-btn {
+    color: var(--strong-cyan);
+}
+
+/* =============================================
+     ABOUT SECTION
+  ============================================= */
+body.dark-mode .about-text-v2 h2 {
+    color: #f8fafc;
+}
+
+body.dark-mode .stat-card {
+    background: rgba(15, 23, 42, 0.75);
+    border-color: rgba(86, 207, 225, 0.18);
+}
+
+body.dark-mode .stat-num {
+    color: #c77dff;
+}
+
+body.dark-mode .stat-label {
+    color: rgba(203, 213, 225, 0.75);
+}
+
+body.dark-mode .about-card {
+    background: rgba(15, 23, 42, 0.65);
+    border-color: rgba(86, 207, 225, 0.15);
+}
+
+body.dark-mode .about-card h4 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .about-card p {
+    color: rgba(203, 213, 225, 0.78);
+}
+
+body.dark-mode .card-ic {
+    background: rgba(116, 0, 184, 0.18);
+    border: 1px solid rgba(181, 23, 255, 0.28);
+    color: #c77dff;
+    box-shadow: 0 0 20px rgba(181, 23, 255, 0.16);
+}
+
+/* Signal board */
+body.dark-mode .signal-board {
+    background: rgba(10, 15, 30, 0.88);
+    border-color: rgba(86, 207, 225, 0.18);
+}
+
+body.dark-mode .signal-title {
+    color: #f1f5f9;
+}
+
+body.dark-mode .noise-pill {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(226, 232, 240, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+body.dark-mode .noise-pill:hover {
+    background: rgba(116, 0, 184, 0.18);
+    color: #c77dff;
+}
+
+body.dark-mode .result-card {
+    background: rgba(15, 23, 42, 0.80);
+    border-color: rgba(86, 207, 225, 0.25);
+}
+
+body.dark-mode .result-card p {
+    color: #f1f5f9;
+}
+
+body.dark-mode .result-card small {
+    color: rgba(203, 213, 225, 0.72);
+}
+
+body.dark-mode .mode-tag {
+    background: rgba(86, 207, 225, 0.10);
+    border-color: rgba(86, 207, 225, 0.22);
+    color: #80ffdb;
+}
+
+body.dark-mode .signal-hint {
+    color: rgba(203, 213, 225, 0.60);
+}
+
+/* =============================================
+     PROCESS STEPS
+  ============================================= */
+body.dark-mode .step-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(100, 223, 223, 0.18);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .step-num {
+    color: rgba(128, 255, 219, 0.22);
+}
+
+body.dark-mode .step-card h3 {
+    color: #e2e8f0;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+body.dark-mode .step-card p {
+    color: rgba(226, 232, 240, 0.78);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+body.dark-mode .step-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-8px);
+    border-color: rgba(86, 207, 225, 0.35);
+    box-shadow: 0 18px 45px rgba(86, 207, 225, 0.15);
+}
+
+body.dark-mode .step-card:hover .step-num {
+    opacity: 0.8;
+    color: rgba(128, 255, 219, 0.55);
+}
+
+/* =============================================
+     ROADMAP
+  ============================================= */
+body.dark-mode .roadmap-card {
+    background: rgba(15, 23, 42, 0.82) !important;
+    border-color: rgba(86, 207, 225, 0.18) !important;
+}
+
+body.dark-mode .roadmap-card h4 {
+    color: #c77dff;
+}
+
+body.dark-mode .roadmap-card p {
+    color: rgba(203, 213, 225, 0.78);
+}
+
+body.dark-mode .roadmap-dot {
+    border-color: rgba(15, 23, 42, 0.85);
+}
+
+/* =============================================
+     CONTACT / FORM
+  ============================================= */
+body.dark-mode .info-card,
+body.dark-mode .contact-form-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .info-txt h4 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .info-txt p {
+    color: rgba(203, 213, 225, 0.75);
+}
+
+body.dark-mode .form-head h3 {
+    color: #f8fafc;
+}
+
+body.dark-mode .form-head p {
+    color: rgba(203, 213, 225, 0.70);
+}
+
+body.dark-mode .form-group label {
+    color: #80ffdb;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: rgba(7, 10, 19, 0.65);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    color: #e2e8f0;
+}
+
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color: rgba(148, 163, 184, 0.55);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: rgba(86, 207, 225, 0.55);
+    box-shadow: 0 0 0 4px rgba(86, 207, 225, 0.10);
+    background: rgba(7, 10, 19, 0.80);
+}
+
+/* =============================================
+     TRUSTED BAR
+  ============================================= */
+body.dark-mode .trusted-bar {
+    border-top-color: rgba(148, 163, 184, 0.12);
+}
+
+body.dark-mode .source-logos span {
+    color: rgba(203, 213, 225, 0.65);
+    filter: grayscale(40%);
+}
+
+body.dark-mode .source-logos span:hover {
+    color: var(--strong-cyan);
+    filter: grayscale(0%);
+}
+
+/* =============================================
+     FOOTER
+  ============================================= */
+body.dark-mode .footbar {
+    background: #05070e;
+}
+
+body.dark-mode .footer-section p {
+    color: rgba(148, 163, 184, 0.80);
+}
+
+body.dark-mode .footer-section a {
+    color: rgba(148, 163, 184, 0.75);
+}
+
+body.dark-mode .footer-section a:hover {
+    color: var(--strong-cyan);
+}
+
+/* =============================================
+     BACK TO TOP
+  ============================================= */
+body.dark-mode .back-to-top {
+    box-shadow: 0 0 25px rgba(116, 0, 184, 0.40);
+}
+
+/* =============================================
+     SCROLL BAR
+  ============================================= */
+body.dark-mode .scroll-bar {
+    opacity: 0.9;
+}
+
+/* =============================================
+     FEATURE ITEMS (icon + text blocks)
+  ============================================= */
+body.dark-mode .feature-item {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    padding: 14px 16px;
+    border-radius: 16px;
+}
+
+body.dark-mode .f-icon {
+    background: rgba(116, 0, 184, 0.18) !important;
+    color: #c77dff !important;
+    border: 1px solid rgba(181, 23, 255, 0.28) !important;
+    box-shadow: 0 0 20px rgba(181, 23, 255, 0.16);
+}
+
+body.dark-mode .f-text h4 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .f-text p {
+    color: rgba(203, 213, 225, 0.78);
+}
+
+/* =============================================
+     MOCK EDITOR (code section)
+  ============================================= */
+body.dark-mode .mock-editor {
+    box-shadow: 0 0 40px rgba(86, 207, 225, 0.12),
+        0 30px 60px rgba(0, 0, 0, 0.40); }

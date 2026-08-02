@@ -1,0 +1,267 @@
+/* ================= BASE HERO ================= */
+.hero {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background: transparent;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= TEXT ================= */
+.slogan {
+  font-weight: 700;
+  color: var(--blue-energy);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--royal-violet), var(--blue-energy));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  filter: drop-shadow(0 10px 20px rgba(116, 0, 184, 0.10));
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.description {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin-bottom: 30px;
+}
+
+.description.small {
+  font-size: 15px;
+  margin: 12px 0 0;
+}
+
+/* ================= SECTION ================= */
+.tint-violet {
+  background-color: rgba(116, 0, 184, 0.03);
+  border-radius: 40px;
+}
+
+.contact-section {
+  position: relative;
+}
+
+/* ================= GRID ================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 50px;
+  align-items: start;
+}
+
+/* ================= INFO CARDS ================= */
+.info-item-list {
+  margin-top: 30px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  /* ✅ optimized */
+  margin-bottom: 18px;
+
+  will-change: transform;
+  /* ✅ smoother hover */
+}
+
+.info-card:hover {
+  transform: translateX(10px);
+  box-shadow:
+    0 25px 55px rgba(116, 0, 184, 0.10),
+    0 18px 40px rgba(15, 23, 42, 0.08);
+  border-color: rgba(100, 223, 223, 0.65);
+}
+
+.info-ic {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(116, 0, 184, 0.08);
+  color: var(--royal-violet);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.info-txt h4 {
+  color: var(--text-main);
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.info-txt p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ================= SOCIAL ================= */
+.social-contact {
+  margin-top: 30px;
+}
+
+.social-contact h4 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.social-icons-contact {
+  display: flex;
+  gap: 18px;
+}
+
+.social-icons-contact a {
+  color: var(--royal-violet);
+  font-size: 22px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons-contact a:hover {
+  transform: translateY(-4px);
+  color: var(--strong-cyan);
+}
+
+/* ================= FORM CARD ================= */
+.contact-form-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 26px;
+  padding: 38px;
+
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  will-change: transform;
+}
+
+.contact-form-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(86, 207, 225, 0.45);
+  box-shadow: 0 25px 70px rgba(116, 0, 184, 0.10);
+}
+
+/* ================= FORM ================= */
+.form-head h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.form-head p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--indigo-bloom);
+  margin: 0 0 8px 4px;
+}
+
+/* unified input styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+
+  border: 2px solid rgba(241, 245, 249, 1);
+  border-radius: 14px;
+
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  color: var(--text-main);
+
+  background: rgba(248, 250, 252, 0.8);
+  outline: none;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.night-particles span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  /* 🔥 THIS MAKES IT BUBBLES */
+}
+.form-group textarea {
+  resize: vertical;
+  /* ✅ better UX */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--strong-cyan);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(86, 207, 225, 0.12);
+}
+
+/* ================= BUTTON ================= */
+.btn-primary {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+
+  background: linear-gradient(135deg, var(--royal-violet), var(--indigo-bloom));
+  cursor: pointer;
+
+  box-shadow: 0 12px 30px rgba(116, 0, 184, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  will-change: transform;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(116, 0, 184, 0.32);
+}

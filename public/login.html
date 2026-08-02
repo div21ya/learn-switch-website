@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | LearnSwitch</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="dark_mode.css">
+    <link rel="stylesheet" href="login.css" />
+  </head>
+
+  <body>
+    
+    <div id="nightParticles" class="night-particles"></div>
+
+    <div class="scroll-container">
+        <div class="scroll-bar" id="myBar"></div>
+    </div>
+
+    <header class="header-box">
+      <nav class="navbar">
+          <a href="home.html" class="logo">Learn<span>Switch</span></a>
+          <ul class="nav-links">
+              <li><a href="home.html">Home</a></li>
+              <li>
+                  <a href="home.html#about">About</a>
+              </li>
+              <li class="dropdown">
+                  <a href="preference.html">Resources <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="preference.html">Roadmaps</a></li>
+                      <!-- <li><a href="#">Concise Concepts</a></li> -->
+                      <!-- <li><a href="#">Cheat Sheets</a></li> -->
+                      <!-- <li><a href="#">My Notes</a></li> -->
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="codewithus.html">TechSec <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="codewithus.html">Code With Us</a></li>
+                      <!-- <li><a href="#">Debug Guide</a></li> -->
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="project.html">Projects <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="project.html#webdev">Web Dev Projects</a></li>
+                      <li><a href="project.html#dsa">DSA Challenges</a></li>
+                      <li><a href="project.html#python">Python Scripts</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="contact.html">Contact</a>
+
+          </ul>
+          <div class="nav-right">
+              <button id="theme-switch" class="theme-bubble-nav">
+                  <i class="fa-solid fa-moon"></i>
+              </button>
+              <!-- Smart nav icon: logged-in → dropdown, else → login page -->
+              <div id="navUserArea" style="position:relative">
+                <!-- Guest state (default shown, hidden if logged in) -->
+                <a href="login.html" class="login-icon" id="navGuestBtn">
+                  <i class="fa-regular fa-circle-user"></i>
+                </a>
+                <!-- Logged-in state (hidden by default) -->
+                <div id="navLoggedIn" style="display:none">
+                  <div id="navAvatarBtn" style="cursor:pointer;width:36px;height:36px;border-radius:50%;border:2px solid rgba(116,0,184,0.4);background:rgba(116,0,184,0.08);display:flex;align-items:center;justify-content:center;color:var(--royal-violet,#7400b8);font-size:18px;overflow:hidden;">
+                    <i class="fa-regular fa-circle-user" id="navAvatarIcon"></i>
+                    <img id="navAvatarImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;border-radius:50%;">
+                  </div>
+                  <div id="navDropdown" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:14px;padding:8px;min-width:180px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:2000;">
+                    <div id="navDropUser" style="padding:10px 12px 8px;font-size:13px;font-weight:700;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:6px;color:#1e1e2f;"></div>
+                    <a href="dashboard.html" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#1e1e2f;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(116,0,184,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-gauge" style="color:#7400b8;width:16px;"></i> Dashboard</a>
+                    <div id="navLogoutBtn" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#dc2626;font-size:13px;font-weight:600;" onmouseover="this.style.background='rgba(220,38,38,0.07)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-right-from-bracket" style="width:16px;"></i> Log Out</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+      </nav>
+  </header>
+
+
+    <main class="login-page">
+      <div class="login-grid">
+        <!-- LEFT -->
+        <section class="login-left">
+          <div class="login-left-inner">
+            <p class="slogan">Secure Access</p>
+            <h1 class="head">
+              Welcome back to <br />
+              <span class="gradient-text">LearnSwitch</span>
+            </h1>
+            <p>
+              Your personalized roadmap, resources, and practice tools are
+              waiting. Log in and continue where you left off.
+            </p>
+
+            <div class="feature-strip">
+              <div class="mini-feature">
+                <div class="mf-ic"><i class="fa-solid fa-map"></i></div>
+                <div class="mf-txt">
+                  <strong>Smart Roadmaps</strong>
+                  <small>Syllabus-friendly paths</small>
+                </div>
+              </div>
+
+              <div class="mini-feature">
+                <div class="mf-ic"><i class="fa-solid fa-bolt"></i></div>
+                <div class="mf-txt">
+                  <strong>Fast Practice</strong>
+                  <small>Code with instant preview</small>
+                </div>
+              </div>
+
+              <div class="mini-feature">
+                <div class="mf-ic">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="mf-txt">
+                  <strong>Safe & Simple</strong>
+                  <small>Clean, minimal UI</small>
+                </div>
+              </div>
+
+              <div class="mini-feature">
+                <div class="mf-ic"><i class="fa-solid fa-star"></i></div>
+                <div class="mf-txt">
+                  <strong>Better Focus</strong>
+                  <small>Less noise, more signal</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT -->
+        <section class="login-card">
+          <div class="login-card-inner">
+            <div class="login-top">
+              <h2>Login</h2>
+              <span class="login-tag">Student Mode</span>
+            </div>
+
+            <p class="login-sub">Enter your credentials to continue 🚀</p>
+            <form class="login-form" id="loginForm">
+
+              <!-- Status message -->
+              <div id="loginMsg" style="display:none;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:700;margin-bottom:16px;"></div>
+
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Your username" required autocomplete="username" />
+              </div>
+
+              <div class="form-group">
+                <label>Password</label>
+                <div style="position:relative">
+                  <input type="password" id="password" placeholder="••••••••" required style="padding-right:44px" autocomplete="current-password" />
+                  <button type="button" id="toggleLoginPw" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#94a3b8;font-size:15px;" title="Show/hide">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="row-between">
+                <label class="remember">
+                  <input type="checkbox" id="rememberMe" /> Remember me
+                </label>
+              </div>
+              <div class="forgot-row">
+                <a href="#" id="openForgot">Forgot Password?</a>
+              </div>
+
+              <button class="btn-login" type="submit">
+                <i class="fa-solid fa-right-to-bracket"></i> Login
+              </button>
+
+              <div class="divider">or continue with</div>
+              <div class="social-row">
+                <button type="button" class="social-btn"><i class="fa-brands fa-google"></i> Google</button>
+                <button type="button" class="social-btn"><i class="fa-brands fa-github"></i> GitHub</button>
+              </div>
+              <div class="login-bottom">Don't have an account? <a href="signup.html">Create one</a></div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footbar">
+      <div class="footer-sections-wrapper">
+        <section class="footer-section">
+          <h2>Stay Connected</h2>
+          <p>
+            Follow me on social media for the latest updates and tech
+            inspiration!
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </section>
+        <section class="footer-section">
+          <h2>Contact Me</h2>
+          <p>
+            If you have any questions or just want to say hi, feel free to reach
+            out!
+          </p>
+          <p>
+            Email:
+            <a href="/cdn-cgi/l/email-protection#2f634a4e5d417c58465b4c476f4a574e425f434a014c4042"><span class="__cf_email__" data-cfemail="eba78e8a9985b89c829f8883ab8e938a869b878ec5888486">[email&#160;protected]</span></a>
+          </p>
+          <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+          <p>Address: 123 Coding Lane, Tech City, TC 12345</p>
+        </section>
+        <section class="footer-section">
+          <h2>Quick Links</h2>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a><br />
+            <a href="#">Terms of Service</a><br />
+            <a href="#">FAQ</a><br />
+            <a href="#">Help and Support</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LS - LearnSwitch. All rights reserved.</p>
+      </div>
+    </f
+    </footer>
+
+    <!-- ========================
+         FORGOT PASSWORD MODAL
+    ======================== -->
+    <div class="modal-overlay" id="forgotOverlay" style="position:fixed;inset:0;background:rgba(2,6,23,0.6);backdrop-filter:blur(10px);display:flex;justify-content:center;align-items:center;padding:22px;z-index:5000;opacity:0;pointer-events:none;transition:opacity 0.35s;">
+      <div class="forgot-modal" id="forgotBox" style="width:min(480px,100%);border-radius:28px;padding:36px;position:relative;background:rgba(255,255,255,0.93);border:1px solid rgba(15,23,42,0.08);backdrop-filter:blur(14px);box-shadow:0 30px 80px rgba(15,23,42,0.18);transform:translateY(20px) scale(0.97);transition:transform 0.4s;overflow:hidden;">
+
+        <!-- Close -->
+        <button id="closeForgot" style="position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:12px;border:1px solid rgba(15,23,42,0.1);background:transparent;cursor:pointer;display:grid;place-items:center;font-size:15px;color:#7400b8;transition:0.2s;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Step 1: Enter email -->
+        <div id="fpStep1">
+          <h3 style="font-family:Poppins,sans-serif;font-size:20px;margin:0 0 6px;">Forgot Password?</h3>
+          <p style="color:#6b7280;font-size:13px;margin:0 0 22px;">Enter the email linked to your account. We'll show you a verification code.</p>
+          <div id="fpMsg1" style="display:none;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:700;margin-bottom:14px;"></div>
+          <label style="display:block;font-size:12px;font-weight:800;color:#7400b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Email Address</label>
+          <input id="fpEmail" type="email" placeholder="you@example.com" style="width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(15,23,42,0.12);font-size:14px;outline:none;box-sizing:border-box;font-family:Inter,sans-serif;transition:border-color 0.2s;" />
+          <button id="fpSendBtn" style="margin-top:16px;width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#7400b8,#6930c3);color:#fff;font-weight:900;font-size:15px;cursor:pointer;transition:0.2s;">
+            <i class="fa-solid fa-paper-plane"></i> Send Verification Code
+          </button>
+          <div style="margin-top:14px;text-align:center;font-size:13px;color:#6b7280;font-weight:600;">
+            Remembered it? <a href="#" id="backToLogin" style="color:#7400b8;font-weight:900;text-decoration:none;">Back to Login</a>
+          </div>
+        </div>
+
+        <!-- Step 2: Enter code -->
+        <div id="fpStep2" style="display:none;">
+          <h3 style="font-family:Poppins,sans-serif;font-size:20px;margin:0 0 6px;">Check Your Email</h3>
+          <p id="fpStep2Sub" style="color:#6b7280;font-size:13px;margin:0 0 6px;"></p>
+          <!-- Simulated code display (since no real backend) -->
+          <div id="fpCodeDisplay" style="background:rgba(116,0,184,0.06);border:1px dashed rgba(116,0,184,0.3);border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:13px;color:#6b7280;"></div>
+          <div id="fpMsg2" style="display:none;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:700;margin-bottom:14px;"></div>
+          <label style="display:block;font-size:12px;font-weight:800;color:#7400b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Enter Code</label>
+          <input id="fpCodeInput" type="text" placeholder="e.g. 482910" maxlength="6" style="width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(15,23,42,0.12);font-size:20px;font-weight:700;letter-spacing:8px;text-align:center;outline:none;box-sizing:border-box;font-family:Inter,sans-serif;transition:border-color 0.2s;" />
+          <button id="fpVerifyBtn" style="margin-top:16px;width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#7400b8,#6930c3);color:#fff;font-weight:900;font-size:15px;cursor:pointer;transition:0.2s;">
+            <i class="fa-solid fa-shield-halved"></i> Verify Code
+          </button>
+        </div>
+
+        <!-- Step 3: Set new password -->
+        <div id="fpStep3" style="display:none;">
+          <h3 style="font-family:Poppins,sans-serif;font-size:20px;margin:0 0 6px;">Set New Password</h3>
+          <p style="color:#6b7280;font-size:13px;margin:0 0 22px;">Choose a strong password for your account.</p>
+          <div id="fpMsg3" style="display:none;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:700;margin-bottom:14px;"></div>
+          <label style="display:block;font-size:12px;font-weight:800;color:#7400b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">New Password</label>
+          <div style="position:relative;margin-bottom:14px;">
+            <input id="fpNewPw" type="password" placeholder="Min 6 characters" style="width:100%;padding:13px 44px 13px 16px;border-radius:12px;border:1.5px solid rgba(15,23,42,0.12);font-size:14px;outline:none;box-sizing:border-box;font-family:Inter,sans-serif;transition:border-color 0.2s;" />
+            <button type="button" id="fpTogglePw" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#94a3b8;font-size:15px;"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <label style="display:block;font-size:12px;font-weight:800;color:#7400b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Confirm New Password</label>
+          <input id="fpConfirmPw" type="password" placeholder="Repeat new password" style="width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(15,23,42,0.12);font-size:14px;outline:none;box-sizing:border-box;font-family:Inter,sans-serif;transition:border-color 0.2s;" />
+          <button id="fpResetBtn" style="margin-top:16px;width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#7400b8,#6930c3);color:#fff;font-weight:900;font-size:15px;cursor:pointer;transition:0.2s;">
+            <i class="fa-solid fa-lock"></i> Reset Password
+          </button>
+        </div>
+
+        <!-- Step 4: Done -->
+        <div id="fpStep4" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-size:52px;margin-bottom:16px;">🎉</div>
+          <h3 style="font-family:Poppins,sans-serif;font-size:20px;margin:0 0 8px;">Password Reset!</h3>
+          <p style="color:#6b7280;font-size:13px;margin:0 0 22px;">Your password has been updated. You can now log in.</p>
+          <button id="fpDoneBtn" style="padding:13px 32px;border-radius:12px;border:none;background:linear-gradient(135deg,#7400b8,#6930c3);color:#fff;font-weight:900;font-size:15px;cursor:pointer;">
+            Go to Login
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dark mode overlay patch -->
+    <script src="index.js"></script>
+    <script src="login.js"></script>
+    <script>
+    // ── Forgot Password Flow ──
+    let _fpCode = '';
+    let _fpEmail = '';
+
+    const fpOverlay = document.getElementById('forgotOverlay');
+    const fpBox = document.getElementById('forgotBox');
+
+    function fpShow(step) {
+      ['fpStep1','fpStep2','fpStep3','fpStep4'].forEach(id => {
+        document.getElementById(id).style.display = id === step ? 'block' : 'none';
+      });
+    }
+
+    function fpShowMsg(elId, text, type) {
+      const el = document.getElementById(elId);
+      el.textContent = text;
+      el.style.display = 'block';
+      el.style.background = type === 'error' ? 'rgba(220,38,38,0.08)' : 'rgba(22,163,74,0.08)';
+      el.style.color     = type === 'error' ? '#dc2626' : '#16a34a';
+      el.style.border    = type === 'error' ? '1px solid rgba(220,38,38,0.2)' : '1px solid rgba(22,163,74,0.2)';
+    }
+
+    function openFpModal() {
+      fpShow('fpStep1');
+      document.getElementById('fpEmail').value = '';
+      document.getElementById('fpCodeInput').value = '';
+      document.getElementById('fpNewPw').value = '';
+      document.getElementById('fpConfirmPw').value = '';
+      ['fpMsg1','fpMsg2','fpMsg3'].forEach(id => document.getElementById(id).style.display = 'none');
+      fpOverlay.style.opacity = '1';
+      fpOverlay.style.pointerEvents = 'auto';
+      fpBox.style.transform = 'translateY(0) scale(1)';
+    }
+
+    function closeFpModal() {
+      fpOverlay.style.opacity = '0';
+      fpOverlay.style.pointerEvents = 'none';
+      fpBox.style.transform = 'translateY(20px) scale(0.97)';
+    }
+
+    document.getElementById('openForgot').addEventListener('click', e => { e.preventDefault(); openFpModal(); });
+    document.getElementById('closeForgot').addEventListener('click', closeFpModal);
+    document.getElementById('backToLogin').addEventListener('click', e => { e.preventDefault(); closeFpModal(); });
+    fpOverlay.addEventListener('click', e => { if (e.target === fpOverlay) closeFpModal(); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeFpModal(); });
+
+    // Step 1 → Send code
+    document.getElementById('fpSendBtn').addEventListener('click', function() {
+      const email = document.getElementById('fpEmail').value.trim().toLowerCase();
+      if (!email) { fpShowMsg('fpMsg1', '⚠ Please enter your email.', 'error'); return; }
+
+      const accounts = JSON.parse(localStorage.getItem('learnswitch-accounts') || '{}');
+      if (!accounts[email]) {
+        fpShowMsg('fpMsg1', '⚠ No account found with that email address.', 'error'); return;
+      }
+
+      // Generate 6-digit code
+      _fpCode  = String(Math.floor(100000 + Math.random() * 900000));
+      _fpEmail = email;
+
+      document.getElementById('fpStep2Sub').textContent = `We sent a code to: ${email}`;
+      document.getElementById('fpCodeDisplay').innerHTML =
+        `<strong>Your verification code:</strong><br><span style="font-size:26px;font-weight:900;letter-spacing:8px;color:#7400b8;">${_fpCode}</span><br><span style="font-size:11px;margin-top:4px;display:block;">(In a real app this would be emailed — shown here for demo)</span>`;
+
+      fpShow('fpStep2');
+    });
+
+    // Step 2 → Verify code
+    document.getElementById('fpVerifyBtn').addEventListener('click', function() {
+      const entered = document.getElementById('fpCodeInput').value.trim();
+      if (!entered) { fpShowMsg('fpMsg2', '⚠ Please enter the code.', 'error'); return; }
+      if (entered !== _fpCode) { fpShowMsg('fpMsg2', '✗ Wrong code. Please try again.', 'error'); return; }
+      fpShow('fpStep3');
+    });
+
+    // Step 3 → Reset password
+    document.getElementById('fpResetBtn').addEventListener('click', function() {
+      const pw1 = document.getElementById('fpNewPw').value;
+      const pw2 = document.getElementById('fpConfirmPw').value;
+      if (!pw1 || !pw2) { fpShowMsg('fpMsg3', '⚠ Please fill in both fields.', 'error'); return; }
+      if (pw1.length < 6) { fpShowMsg('fpMsg3', '⚠ Password must be at least 6 characters.', 'error'); return; }
+      if (pw1 !== pw2) { fpShowMsg('fpMsg3', '✗ Passwords do not match.', 'error'); return; }
+
+      const accounts = JSON.parse(localStorage.getItem('learnswitch-accounts') || '{}');
+      if (accounts[_fpEmail]) {
+        accounts[_fpEmail].password = pw1;
+        localStorage.setItem('learnswitch-accounts', JSON.stringify(accounts));
+      }
+      fpShow('fpStep4');
+    });
+
+    // Step 4 → Done
+    document.getElementById('fpDoneBtn').addEventListener('click', closeFpModal);
+
+    // Toggle password in step 3
+    document.getElementById('fpTogglePw').addEventListener('click', function() {
+      const inp = document.getElementById('fpNewPw');
+      const show = inp.type === 'password';
+      inp.type = show ? 'text' : 'password';
+      this.querySelector('i').className = show ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+    });
+
+    // Dark mode for modal
+    function patchFpModalDark() {
+      const dark = document.body.classList.contains('dark-mode');
+      fpBox.style.background = dark ? 'rgba(15,23,42,0.95)' : 'rgba(255,255,255,0.93)';
+      fpBox.style.border = dark ? '1px solid rgba(148,163,184,0.15)' : '1px solid rgba(15,23,42,0.08)';
+      fpBox.querySelectorAll('h3,label').forEach(el => el.style.color = dark ? '#f8fafc' : '');
+      fpBox.querySelectorAll('p').forEach(el => el.style.color = dark ? 'rgba(226,232,240,0.7)' : '');
+      fpBox.querySelectorAll('input').forEach(inp => {
+        inp.style.background = dark ? 'rgba(7,10,19,0.6)' : '';
+        inp.style.color = dark ? '#e2e8f0' : '';
+        inp.style.borderColor = dark ? 'rgba(148,163,184,0.2)' : '';
+      });
+    }
+
+    // Apply on load and on toggle
+    document.addEventListener('DOMContentLoaded', patchFpModalDark);
+    const themeObserver = new MutationObserver(patchFpModalDark);
+    themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    </script>
+  </body>
+</html>
