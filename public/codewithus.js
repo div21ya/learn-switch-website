@@ -581,99 +581,87 @@ int main() {
   }
 
   /* ── C: Judge0 API ── */
-  const JUDGE0_API = "https://judge0-ce.p.rapidapi.com";
-  // Public Rapid API key - limited free tier
-  // Replace RAPID_API_KEY with your own key from https://rapidapi.com/judge0-official/api/judge0-ce
-  const RAPID_API_KEY = "YOUR_RAPIDAPI_KEY_HERE";
+   /* ── C: Judge0 API via Express backend ── */
 
-  async function runC() {
-    consoleReset();
-    const code = files[0].content;
-    const stdin = stdinInput.value || "";
+async function runC() {
+  consoleReset();
 
-    setBadge("running", "⚙ Compiling…");
-    setStatus("Sending to compiler…", "info");
-    runBtn.disabled = true;
+  const code = files[0].content;
+  const stdin = stdinInput.value || "";
 
-    try {
-      // Submit
-      const submitRes = await fetch(
-        `${JUDGE0_API}/submissions?base64_encoded=false&wait=true`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-RapidAPI-Key": RAPID_API_KEY,
-            "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
-          },
-          body: JSON.stringify({
-            language_id: 50, // C (GCC 9.2.0)
-            source_code: code,
-            stdin: stdin,
-          }),
-        },
-      );
+  setBadge("running", "⚙ Compiling…");
+  setStatus("Sending to compiler…", "info");
+  runBtn.disabled = true;
 
-      if (!submitRes.ok) {
-        const errTxt = await submitRes.text();
-        throw new Error("API error " + submitRes.status + ": " + errTxt);
-      }
+  try {
+    const response = await fetch("/api/compile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        source_code: code,
+        stdin: stdin,
+      }),
+    });
 
-      const result = await submitRes.json();
-      const status = result.status?.description || "Unknown";
+    const result = await response.json();
 
-      if (result.compile_output) {
-        setBadge("fail", "✗ Compile error");
-        consoleWrite("── Compile Error ──", "warn");
-        consoleWrite(result.compile_output, "err");
-        setStatus("Compile error", "err");
-      } else if (result.stderr) {
-        setBadge("fail", "✗ Runtime error");
-        consoleWrite("── Runtime Error ──", "warn");
-        consoleWrite(result.stderr, "err");
-        setStatus("Runtime error", "err");
-      } else if (result.stdout !== null && result.stdout !== undefined) {
-        setBadge("ok", "✓ " + status);
-        consoleWrite("── Output ──", "info");
-        consoleWrite(result.stdout || "(no output)", "ok");
-        if (result.time)
-          consoleWrite(
-            `── Time: ${result.time}s  Memory: ${result.memory} KB`,
-            "info",
-          );
-        setStatus(`Done in ${result.time || "?"}s ✓`, "ok");
-      } else {
-        setBadge("ok", "✓ " + status);
-        consoleWrite("(no output)", "info");
-        setStatus(status, "ok");
-      }
-    } catch (err) {
-      setBadge("fail", "✗ Error");
-      consoleWrite("❌ " + err.message, "err");
+    if (!response.ok) {
+      const errorMessage =
+        typeof result.error === "string"
+          ? result.error
+          : JSON.stringify(result.error);
 
-      // Graceful fallback message if no API key set
-      if (RAPID_API_KEY === "YOUR_RAPIDAPI_KEY_HERE") {
-        consoleWrite("", "info");
-        consoleWrite("── Setup Required ──", "warn");
-        consoleWrite(
-          "To run C code, add your RapidAPI key in codewithus.js.",
-          "info",
-        );
-        consoleWrite(
-          "1. Get a free key at: rapidapi.com/judge0-official/api/judge0-ce",
-          "info",
-        );
-        consoleWrite(
-          "2. Replace YOUR_RAPIDAPI_KEY_HERE in the JS file.",
-          "info",
-        );
-      }
-      setStatus("Compiler unavailable", "err");
+      throw new Error(errorMessage);
     }
 
-    runBtn.disabled = false;
+    const status = result.status?.description || "Unknown";
+
+    if (result.compile_output) {
+      setBadge("fail", "✗ Compile error");
+      consoleWrite("── Compile Error ──", "warn");
+      consoleWrite(result.compile_output, "err");
+      setStatus("Compile error", "err");
+
+    } else if (result.stderr) {
+      setBadge("fail", "✗ Runtime error");
+      consoleWrite("── Runtime Error ──", "warn");
+      consoleWrite(result.stderr, "err");
+      setStatus("Runtime error", "err");
+
+    } else if (
+      result.stdout !== null &&
+      result.stdout !== undefined
+    ) {
+      setBadge("ok", "✓ " + status);
+      consoleWrite("── Output ──", "info");
+      consoleWrite(result.stdout || "(no output)", "ok");
+
+      if (result.time) {
+        consoleWrite(
+          `── Time: ${result.time}s  Memory: ${result.memory} KB`,
+          "info"
+        );
+      }
+
+      setStatus(`Done in ${result.time || "?"}s ✓`, "ok");
+
+    } else {
+      setBadge("ok", "✓ " + status);
+      consoleWrite("(no output)", "info");
+      setStatus(status, "ok");
+    }
+
+  } catch (err) {
+    setBadge("fail", "✗ Error");
+    consoleWrite("❌ " + err.message, "err");
+    setStatus("Compiler unavailable", "err");
   }
 
+  runBtn.disabled = false;
+}
+   
   function setBadge(type, text) {
     compileBadge.innerHTML = `<span class="compile-badge ${type}">${text}</span>`;
   }
